@@ -36,13 +36,14 @@ const Hero: React.FC = () => {
                                 Try Live Dashboard
                                 <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
-                            <Link
-                                to="/contact"
+                            <a
+                                href="/resume.pdf"
+                                download="Gokhan_Sahin_Resume.pdf"
                                 className="inline-flex items-center justify-center px-6 py-3 border border-slate-700 text-base font-semibold rounded-lg text-white hover:bg-slate-800 transition-colors"
                             >
                                 <Download className="mr-2 h-4 w-4" />
                                 Resume
-                            </Link>
+                            </a>
                         </div>
 
                         <div className="pt-8 border-t border-slate-800 grid grid-cols-3 gap-6">
