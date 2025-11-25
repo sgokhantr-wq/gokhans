@@ -18,9 +18,9 @@ const Hero: React.FC = () => {
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white">
-                            I turn ERP signals<br />
+                            I turn data
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-500">
-                                into decisions.
+                                <br />into decisions
                             </span>
                         </h1>
 
