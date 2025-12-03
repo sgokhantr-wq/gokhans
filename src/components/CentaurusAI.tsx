@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Sparkles, Shield, Bot, Zap, Database, Brain } from "lucide-react";
+import { Sparkles, Shield, Bot, Zap, Database, Brain, Linkedin } from "lucide-react";
 
 const CentaurusAI: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -282,6 +282,15 @@ const CentaurusAI: React.FC = () => {
                             >
                                 See Live Demo
                             </Link>
+                            <a
+                                href="https://www.linkedin.com/in/gokhan-sahin-417b8a171/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-4 rounded-xl border-2 border-[#0077b5]/50 hover:border-[#0077b5] bg-[#0077b5]/10 hover:bg-[#0077b5]/20 text-slate-200 font-semibold transition-all duration-300 backdrop-blur-sm flex items-center gap-2"
+                            >
+                                <Linkedin className="w-5 h-5 text-[#0077b5]" />
+                                <span>LinkedIn</span>
+                            </a>
                         </motion.div>
                     </motion.div>
                 </section>
