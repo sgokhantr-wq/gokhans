@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
   Database, Code2, ShieldCheck, FileText, GitBranch,
-  AlertTriangle, Package, BarChart2, Bug, Repeat,
+  AlertTriangle, Package, BarChart2, Repeat,
   Factory, Layers, CalendarClock, MonitorSmartphone, Server,
   ArrowLeftRight, Settings, DollarSign, BarChart, Cog,
   Brain, Map, Globe, Languages, Truck, Cpu,

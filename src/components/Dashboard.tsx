@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    LineChart, Line, AreaChart, Area, ScatterChart, Scatter,
+    Line, AreaChart, Area, ScatterChart, Scatter,
     XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
     ZAxis
 } from 'recharts';
@@ -76,7 +76,6 @@ const Dashboard: React.FC = () => {
     // ─── Simulation Engine (The "Live" feel) ───
     useEffect(() => {
         const interval = setInterval(() => {
-            setTick(t => t + 1);
             const nowTime = new Date().toLocaleTimeString('en-US', { hour12: false });
 
             // 1. Update Production Chart
