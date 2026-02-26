@@ -54,7 +54,6 @@ const generateRiskData = (isShock: boolean) => {
 
 const Dashboard: React.FC = () => {
     // ─── State ───
-    const [tick, setTick] = useState(0);
     const [isShockMode, setIsShockMode] = useState(false);
 
     // Data states
