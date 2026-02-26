@@ -24,13 +24,13 @@ const sections = [
     skills: [
       { icon: Database, title: 'Data Engineering & ETL', desc: 'Full Extract → Transform → Load pipelines — reading raw messy CSVs, cleaning them, and delivering structured, consumption-ready files.' },
       { icon: Code2, title: 'Python Programming', desc: 'Working with csv, pandas, re, os — writing multi-phase scripts with control flow, string manipulation, and file I/O.' },
+      { icon: BarChart, title: 'MATLAB Computer Vision', desc: 'Used the MATLAB Image Processing Toolbox to model automated industrial defect finders for serial production lines.' },
       { icon: ShieldCheck, title: 'Data Quality & Validation', desc: 'Count distributions, inspect anomalies, and verify after fixing. A disciplined QA mindset that analyses first and fixes second.' },
       { icon: FileText, title: 'CSV / Flat File Parsing', desc: 'Expert in encoding issues (latin-1 vs utf-8-sig), field delimiters, quoted fields with embedded commas, and malformed row structures.' },
       { icon: GitBranch, title: 'Business Data Transformation', desc: 'Extracting MfgCode from ItemBarCode by pattern-matching against ManufacturerPartNumber — translating business logic into code.' },
       { icon: AlertTriangle, title: 'Error Handling & Edge Cases', desc: 'Footer lines, manufacturer names with commas, extra price-break columns — handling multiple failure modes inside a single pipeline.' },
       { icon: Package, title: 'Supply Chain / Parts Data', desc: 'Manufacturer part numbers, barcodes, price breaks, quantity tiers — inventory and catalog data for online parts distribution.' },
       { icon: BarChart2, title: 'Excel & Reporting Integration', desc: 'UTF-8 BOM encoding, column ordering, clean output — preparing data specifically for end-user consumption in Excel.' },
-      { icon: Bug, title: 'Debugging & Troubleshooting', desc: 'When the script breaks, the error comes back, the diagnosis happens, and the solution runs — real-world systematic problem-solving.' },
       { icon: Repeat, title: 'Process Automation', desc: 'Configuration blocks (INPUT_FILE, OUTPUT_FILE) signal reusable tools built for recurring file processing, not one-time cleanups.' },
     ],
   },
@@ -43,16 +43,16 @@ const sections = [
     borderColor: 'border-violet-500/30',
     glowColor: 'shadow-violet-500/10',
     skills: [
-      { icon: Factory, title: 'Manufacturing ERP Architecture', desc: 'Designing end-to-end ERP systems: item master strategy, multi-level BOM, routing design, planning engine config, and BC v27 custom extensions.' },
+      { icon: Factory, title: 'Manufacturing ERP Architecture', desc: 'Designing end-to-end ERP systems, including architecture development, data transition, and data validation for Business Central v27+.' },
+      { icon: MonitorSmartphone, title: 'Microsoft Dynamics 365 BC', desc: 'Deep functional expertise in BC v27+: production orders, planning worksheets, subcontracting, standard costing, and item variants.' },
+      { icon: Server, title: 'Microsoft Dynamics AX & ERPNext', desc: 'Scale production planning in AX, plus hands-on deployment and testing of open-source ERPNext in local environments.' },
       { icon: Layers, title: 'Multi-Level Bill of Materials', desc: 'BOMs up to 7 levels deep with phantom assemblies, routing link codes, scrap factors, variant-level component selection, and subcontracting.' },
-      { icon: CalendarClock, title: 'Production Planning & Scheduling', desc: 'Managing 2,400+ order lines/month, coordinating parallel operations, batch sizing for outsourced ops, and balancing demand across work centers.' },
-      { icon: MonitorSmartphone, title: 'Microsoft Dynamics 365 BC', desc: 'Deep functional expertise in BC v27: production orders, planning worksheets, subcontracting, standard costing, warehouse management, and item variants.' },
-      { icon: Server, title: 'Microsoft Dynamics AX', desc: 'Production planning and inventory management in AX: item types (Item, BOM, Labor), PO management, and sales order processing at scale.' },
       { icon: ArrowLeftRight, title: 'ERP Data Migration', desc: 'Leading migration strategy from legacy ERP to BC: 750,000-item activity analysis, classification frameworks, cross-reference consolidation, go-live planning.' },
       { icon: Settings, title: 'MRP & Supply Chain Config', desc: 'Reordering policies, safety stock, reorder points, lead time management — demand-driven replenishment for items with 2-day to 4-month lead times.' },
       { icon: DollarSign, title: 'Standard Cost Accounting', desc: 'Multi-level standard costing: material, direct labor from routing, setup amortization, overhead, subcontracting cost, scrap allowances, and variance analysis.' },
       { icon: BarChart, title: 'Data Architecture & Analytics', desc: 'Custom table design for BOM simulation and exception tracking, plus analytics on vendor quality, scrap trends, quote conversion, and planning parameters.' },
-      { icon: Cog, title: 'MIL-SPEC Connector Manufacturing', desc: 'Shell machining, outsourced plating with QC, contact hooding, insert assembly, epoxy potting, and electrical testing per MIL-DTL-38999 and MIL-DTL-24308.' },
+      { icon: Cog, title: 'MIL-SPEC Connector Manufacturing', desc: 'Shell machining, outsourced plating with QC, contact hooding, insert assembly, epoxy potting, and electrical testing per MIL-DTL-38999.' },
+      { icon: Map, title: 'AutoCAD & Technical Drawing', desc: 'Proficiency with technical drawings and reading/creating schematics for manufacturing production planning and component design.' },
     ],
   },
   {
@@ -65,11 +65,11 @@ const sections = [
     glowColor: 'shadow-amber-500/10',
     skills: [
       { icon: Brain, title: 'Systems Thinker', desc: 'Management Engineering education trains the eye to see processes, constraints, optimization logic, and resource flows across the entire value chain.' },
-      { icon: Map, title: 'Production Planning Specialist', desc: 'Managing inventory levels, material reservations, order forecasting, and work order release timing — understanding how small mistakes ripple into chaos.' },
+      { icon: CalendarClock, title: 'Production Planning Specialist', desc: 'Managing 2,400+ order lines/month, inventory levels, material reservations, order forecasting, and work center demand balancing.' },
       { icon: Users, title: 'Automotive Tier 1 Experience', desc: 'Tier 1 supplier environment for Audi, VW, Mercedes-Benz, BMW — just-in-time pressure, strict quality expectations, and zero tolerance for delays.' },
-      { icon: Globe, title: 'International Professional', desc: 'Worked in Aguascalientes, Mexico — demonstrating adaptability, cultural intelligence, independence, and the risk tolerance to build competence abroad.' },
+      { icon: Globe, title: 'Global Manufacturing Operations', desc: 'Worked across Turkey, Bulgaria, Mexico, and the United States — demonstrating international adaptability and high cross-cultural competence.' },
       { icon: Languages, title: 'Bilingual Operational Communicator', desc: 'Professional Spanish in production and logistics environments — rare and extremely valuable in North American manufacturing.' },
-      { icon: Truck, title: 'Logistics + Production Bridge', desc: 'Logistics controller background means understanding customer demand visibility, delivery schedules, inventory positioning, and transportation impact on production.' },
+      { icon: Truck, title: 'Logistics + Production Bridge', desc: 'Logistics controller background means understanding customer demand visibility, delivery schedules, inventory positioning, and transportation impact.' },
       { icon: Cpu, title: 'Local AI Infrastructure Builder', desc: 'Pulled and ran models like LLaMA 3.1 and FARA 7B locally — not just using AI tools, but deploying them, signaling real technical depth.' },
       { icon: Zap, title: 'Automation Engineer (Non-traditional)', desc: 'Desktop automation agents using PyAutoGUI, OCR, and AI-generated text — combining Software + Vision + AI + ERP in rare ways.' },
       { icon: Eye, title: 'Process Signal Architect', desc: 'Designing AI-triggered signals inside workflows — automation triggers, intelligent alerts, and proactive systems built for operational response.' },
@@ -213,8 +213,8 @@ const HeroBanner: React.FC = () => (
       <div className="flex flex-wrap justify-center gap-4 mt-10">
         {[
           { label: 'Skills Documented', value: '30+', color: 'text-teal-400' },
-          { label: 'ERP Systems', value: '2', color: 'text-violet-400' },
-          { label: 'Countries Worked', value: '3', color: 'text-amber-400' },
+          { label: 'ERP Systems', value: '4+', color: 'text-violet-400' },
+          { label: 'Countries Worked', value: '4', color: 'text-amber-400' },
           { label: 'Order Lines / Month', value: '2,400+', color: 'text-teal-400' },
         ].map((s) => (
           <div key={s.label} className="px-5 py-3 bg-slate-900 border border-slate-700 rounded-xl text-center">
