@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Dashboard from './components/Dashboard';
 import AutomationSim from './components/AutomationSim';
+import ProductionPlanningDemo from './components/ProductionPlanningDemo';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import CentaurusAI from './components/CentaurusAI';
@@ -26,12 +27,7 @@ const App: React.FC = () => {
                 <main className="flex-grow pt-20">
                     <Routes>
                         <Route path="/" element={<Hero />} />
-                        <Route path="/live-demo" element={
-                            <div className="container mx-auto px-4 py-12 space-y-16">
-                                <Dashboard />
-                                <AutomationSim />
-                            </div>
-                        } />
+                        <Route path="/live-demo" element={<ProductionPlanningDemo />} />
                         <Route path="/centaurus" element={<CentaurusAI />} />
                         <Route path="/skills" element={<SkillSet />} />
                         <Route path="/portfolio" element={<Portfolio />} />
