@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, BarChart, Bar, Cell } from 'recharts';
+import React, { useState, useMemo } from 'react';
+import { XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, BarChart, Bar, Cell, Area, ComposedChart, Line, Legend } from 'recharts';
 
 const ProductionPlanningDemo: React.FC = () => {
     const [demand, setDemand] = useState<number>(1000);
@@ -19,6 +19,38 @@ const ProductionPlanningDemo: React.FC = () => {
         { name: 'Total Demand', units: demand, fill: '#ef4444' } // red-500
     ];
 
+    // --- Material Inventory Simulation ---
+    const [dailyDemand, setDailyDemand] = useState<number>(100);
+    const [dailyProduction, setDailyProduction] = useState<number>(120);
+    const [minInventory, setMinInventory] = useState<number>(200);
+    const [maxInventory, setMaxInventory] = useState<number>(800);
+    const [startingStock, setStartingStock] = useState<number>(500);
+
+    const timeSeriesData = useMemo(() => {
+        let currentStock = startingStock;
+        const series = [];
+        for (let day = 1; day <= 14; day++) {
+            // Apply production (receipts)
+            currentStock += dailyProduction;
+            // Apply demand (issues)
+            currentStock -= dailyDemand;
+
+            let status = 'Optimal';
+            if (currentStock < minInventory) status = 'Warning: Stockout Risk';
+            if (currentStock > maxInventory) status = 'Warning: Excess Inventory';
+
+            series.push({
+                day: `Day ${day}`,
+                inventory: currentStock,
+                min: minInventory,
+                max: maxInventory,
+                demand: dailyDemand,
+                status
+            });
+        }
+        return series;
+    }, [startingStock, dailyDemand, dailyProduction, minInventory, maxInventory]);
+
     return (
         <div className="container mx-auto px-4 py-12 max-w-5xl">
             <div className="mb-12 text-center space-y-4">
@@ -30,8 +62,9 @@ const ProductionPlanningDemo: React.FC = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Controls Area */}
+                {/* DEMO 1: Supply vs Demand Overview */}
                 <div className="lg:col-span-1 border border-slate-800 bg-slate-900 rounded-xl p-6 space-y-8">
-                    <h2 className="text-2xl font-mono font-bold text-white border-b border-slate-800 pb-4">Parameters</h2>
+                    <h2 className="text-xl font-mono font-bold text-white border-b border-slate-800 pb-4">1. Weekly Balance</h2>
                     
                     <div className="space-y-4">
                         <label className="block">
@@ -43,7 +76,7 @@ const ProductionPlanningDemo: React.FC = () => {
                                 type="range" 
                                 min="0" max="2000" step="50"
                                 value={demand} 
-                                onChange={(e) => setDemand(Number(e.target.value))}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDemand(Number(e.target.value))}
                                 className="w-full accent-red-500"
                             />
                             <p className="text-xs text-slate-500 mt-1">Expected customer orders.</p>
@@ -60,7 +93,7 @@ const ProductionPlanningDemo: React.FC = () => {
                                 type="range" 
                                 min="0" max="2000" step="50"
                                 value={capacity} 
-                                onChange={(e) => setCapacity(Number(e.target.value))}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCapacity(Number(e.target.value))}
                                 className="w-full accent-teal-500"
                             />
                             <p className="text-xs text-slate-500 mt-1">Maximum units that can be built per week.</p>
@@ -77,7 +110,7 @@ const ProductionPlanningDemo: React.FC = () => {
                                 type="range" 
                                 min="0" max="1000" step="50"
                                 value={inventory} 
-                                onChange={(e) => setInventory(Number(e.target.value))}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInventory(Number(e.target.value))}
                                 className="w-full accent-slate-500"
                             />
                             <p className="text-xs text-slate-500 mt-1">Stock already available in the warehouse.</p>
@@ -151,6 +184,125 @@ const ProductionPlanningDemo: React.FC = () => {
                                 The goal is to perfectly balance these three elements to avoid stockouts (running out of product) and minimize excess inventory (tying up cash).
                             </p>
                          </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* --- DEMO 2: Inventory Projection --- */}
+            <div className="mt-16 border-t border-slate-800 pt-16">
+                <div className="mb-12 text-center space-y-4">
+                    <h2 className="text-3xl md:text-4xl font-mono font-bold text-blue-400">2. Material Inventory Projection</h2>
+                    <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                        Track a specific part number over time. Keep stock levels between the <span className="text-red-400 font-semibold">Min (Safety Stock)</span> and <span className="text-emerald-400 font-semibold">Max (Storage Limit)</span> thresholds.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    {/* Controls */}
+                    <div className="lg:col-span-1 space-y-6">
+                        <div className="border border-slate-800 bg-slate-900 rounded-xl p-6 space-y-6">
+                            <h3 className="text-xl font-mono font-bold text-white border-b border-slate-800 pb-4">Daily Rates</h3>
+                            
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium">Daily Demand</span>
+                                    <span className="text-red-400 font-mono">{dailyDemand}</span>
+                                </div>
+                                <input 
+                                    type="range" min="50" max="300" step="10"
+                                    value={dailyDemand} 
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDailyDemand(Number(e.target.value))}
+                                    className="w-full accent-red-500"
+                                />
+                                <p className="text-xs text-slate-500 mt-1">Units consumed per day</p>
+                            </label>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium">Daily Production</span>
+                                    <span className="text-teal-400 font-mono">{dailyProduction}</span>
+                                </div>
+                                <input 
+                                    type="range" min="50" max="300" step="10"
+                                    value={dailyProduction} 
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDailyProduction(Number(e.target.value))}
+                                    className="w-full accent-teal-500"
+                                />
+                                <p className="text-xs text-slate-500 mt-1">Units built/received per day</p>
+                            </label>
+                        </div>
+
+                        <div className="border border-slate-800 bg-slate-900 rounded-xl p-6 space-y-6">
+                            <h3 className="text-xl font-mono font-bold text-white border-b border-slate-800 pb-4">Policy Limits</h3>
+                            
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium">Min Inventory</span>
+                                    <span className="text-red-400 font-mono">{minInventory}</span>
+                                </div>
+                                <input 
+                                    type="range" min="50" max="500" step="50"
+                                    value={minInventory} 
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMinInventory(Number(e.target.value))}
+                                    className="w-full accent-red-500"
+                                />
+                                <p className="text-xs text-slate-500 mt-1">Safety stock threshold</p>
+                            </label>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium">Max Inventory</span>
+                                    <span className="text-emerald-400 font-mono">{maxInventory}</span>
+                                </div>
+                                <input 
+                                    type="range" min="300" max="1500" step="50"
+                                    value={maxInventory} 
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMaxInventory(Number(e.target.value))}
+                                    className="w-full accent-emerald-500"
+                                />
+                                <p className="text-xs text-slate-500 mt-1">Max storage capacity</p>
+                            </label>
+                        </div>
+                    </div>
+
+                    {/* Chart */}
+                    <div className="lg:col-span-3 border border-slate-800 bg-slate-900 rounded-xl p-6 h-[500px] flex flex-col">
+                        <div className="mb-4">
+                            <h3 className="text-lg font-mono text-white">14-Day Forward Projection</h3>
+                            <p className="text-sm text-slate-400">Starting Stock: {startingStock} units</p>
+                        </div>
+                        <div className="flex-grow">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <ComposedChart data={timeSeriesData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                                    <XAxis dataKey="day" stroke="#64748b" tick={{fill: '#94a3b8', fontSize: 12}} />
+                                    <YAxis stroke="#64748b" tick={{fill: '#94a3b8'}} />
+                                    <RechartsTooltip 
+                                        contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#f8fafc' }}
+                                        labelStyle={{ color: '#cbd5e1' }}
+                                    />
+                                    <Legend wrapperStyle={{ paddingTop: '20px' }} />
+                                    
+                                    {/* Min/Max Bands */}
+                                    <Area type="step" dataKey="max" fill="none" stroke="#10b981" strokeDasharray="5 5" fillOpacity={0} name="Max Limit" />
+                                    <Area type="step" dataKey="min" fill="none" stroke="#ef4444" strokeDasharray="5 5" fillOpacity={0} name="Min Limit (Safety Stock)" />
+                                    
+                                    {/* Demand Bars */}
+                                    <Bar dataKey="demand" barSize={20} fill="#3b82f6" opacity={0.3} name="Daily Demand" radius={[2, 2, 0, 0]} />
+                                    
+                                    {/* Actual Inventory Line */}
+                                    <Line 
+                                        type="monotone" 
+                                        dataKey="inventory" 
+                                        stroke="#14b8a6" 
+                                        strokeWidth={3}
+                                        dot={{ r: 4, fill: '#0f172a', stroke: '#14b8a6', strokeWidth: 2 }} 
+                                        activeDot={{ r: 6, fill: '#14b8a6' }}
+                                        name="Projected Inventory" 
+                                    />
+                                </ComposedChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
                 </div>
             </div>
