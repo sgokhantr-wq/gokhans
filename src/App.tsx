@@ -2,8 +2,6 @@ import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Dashboard from './components/Dashboard';
-import AutomationSim from './components/AutomationSim';
 import ProductionPlanningDemo from './components/ProductionPlanningDemo';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
