@@ -24,7 +24,7 @@ const ProductionPlanningDemo: React.FC = () => {
     const [dailyProduction, setDailyProduction] = useState<number>(120);
     const [minInventory, setMinInventory] = useState<number>(200);
     const [maxInventory, setMaxInventory] = useState<number>(800);
-    const [startingStock, setStartingStock] = useState<number>(500);
+    const [startingStock] = useState<number>(500);
 
     const timeSeriesData = useMemo(() => {
         let currentStock = startingStock;
