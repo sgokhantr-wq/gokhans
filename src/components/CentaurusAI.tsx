@@ -194,7 +194,7 @@ const CentaurusAI: React.FC = () => {
                                     Centaurus AI
                                 </h1>
                                 <p className="mt-4 text-xl md:text-2xl text-slate-300 max-w-2xl font-light">
-                                    An AI assistant I built and deployed — currently automating sales quote creation from customer emails
+                                    An AI assistant I built and deployed, currently automating sales quote creation from customer emails
                                 </p>
                             </div>
                             <motion.div
@@ -312,13 +312,13 @@ const CentaurusAI: React.FC = () => {
                             {[
                                 {
                                     icon: Brain,
-                                    title: "Fine-Tunes Open-Source Models",
+                                    title: "Fine Tunes Open Source Models",
                                     description: "Customize LLaMA, Mistral, DeepSeek, and other models with your proprietary data and domain expertise."
                                 },
                                 {
                                     icon: Shield,
-                                    title: "Private — Runs On-Prem or Cloud",
-                                    description: "Full control over your data. Deploy on-premises or in your private cloud with complete security and compliance."
+                                    title: "Private, Runs On Prem or Cloud",
+                                    description: "Full control over your data. Deploy on premises or in your private cloud with complete security and compliance."
                                 },
                                 {
                                     icon: Bot,
@@ -338,7 +338,7 @@ const CentaurusAI: React.FC = () => {
                                 {
                                     icon: Zap,
                                     title: "Scalable Performance",
-                                    description: "Perform like your best employees — or better. Scale across departments and use cases effortlessly."
+                                    description: "Perform like your best employees, or better. Scale across departments and use cases effortlessly."
                                 }
                             ].map((feature, idx) => (
                                 <motion.div
@@ -389,8 +389,8 @@ const CentaurusAI: React.FC = () => {
                                 },
                                 {
                                     step: "02",
-                                    title: "Fine-Tune Open-Source Models",
-                                    description: "We customize state-of-the-art models with your specific data and domain requirements for optimal performance."
+                                    title: "Fine Tune Open Source Models",
+                                    description: "We customize state of the art models with your specific data and domain requirements for optimal performance."
                                 },
                                 {
                                     step: "03",
@@ -481,8 +481,8 @@ const CentaurusAI: React.FC = () => {
                         <p className="text-lg text-slate-300 mb-8 leading-relaxed">
                             Unlike generic AI solutions, Centaurus is built specifically for enterprises that demand
                             <span className="text-cyan-400 font-semibold"> reliability, accuracy, and complete control</span>.
-                            We fine-tune open-source models to understand your unique business context, then deploy them
-                            securely within your infrastructure — delivering <span className="text-cyan-400 font-semibold">cost savings,
+                            We fine tune open source models to understand your unique business context, then deploy them
+                            securely within your infrastructure, delivering <span className="text-cyan-400 font-semibold">cost savings,
                                 automation, and performance</span> that rivals or exceeds your top employees.
                         </p>
 

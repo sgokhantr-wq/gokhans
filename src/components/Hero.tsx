@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
                         </h1>
 
                         <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed">
-                            I sit at the cross of production excellence and technology. I plan, automate, and optimize — from the shop floor to the ERP layer — and I'm looking to own the whole operation, not just one piece of it.
+                            I sit at the cross of production excellence and technology. I plan, automate, and optimize, from the shop floor to the ERP layer, and I'm looking to own the whole operation, not just one piece of it.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
                             <div className="space-y-2">
                                 <BarChart3 className="h-6 w-6 text-slate-500" />
                                 <h3 className="font-semibold text-white">Analytics</h3>
-                                <p className="text-xs text-slate-500">Data-Driven Decisions · End-to-End Visibility</p>
+                                <p className="text-xs text-slate-500">Data Driven Decisions · End to End Visibility</p>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
 
                             <div className="grid grid-cols-2 gap-4 mb-6">
                                 <div className="bg-slate-950 p-4 rounded-lg border border-slate-800">
-                                    <div className="text-xs text-slate-500 mb-1">On-Time Shipments</div>
+                                    <div className="text-xs text-slate-500 mb-1">On Time Shipments</div>
                                     <div className="text-2xl font-mono text-teal-400">98.4%</div>
                                     <div className="h-1 w-full bg-slate-800 mt-2 rounded overflow-hidden">
                                         <div className="h-full bg-teal-500 w-[98%]"></div>
