@@ -107,7 +107,7 @@ const ProductionPlanningDemo: React.FC = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-12 max-w-5xl">
+        <div className="container mx-auto px-4 py-12 max-w-7xl">
             <div className="mb-12 text-center space-y-4">
                 <h1 className="text-4xl md:text-5xl font-mono font-bold text-teal-400">Production Planning 101</h1>
                 <p className="text-xl text-slate-400 max-w-2xl mx-auto">
@@ -437,7 +437,7 @@ const ProductionPlanningDemo: React.FC = () => {
                         <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
                             <h3 className="text-lg font-mono text-white mb-4">BOM Explosion & Netting</h3>
                             <div className="overflow-x-auto">
-                                <table className="w-full text-left border-collapse">
+                                <table className="w-full text-left border-collapse whitespace-nowrap">
                                     <thead>
                                         <tr className="bg-slate-700/50 text-slate-300 text-sm">
                                             <th className="p-3 border-b border-slate-700">Level</th>
