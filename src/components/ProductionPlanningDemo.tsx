@@ -73,13 +73,13 @@ const ProductionPlanningDemo: React.FC = () => {
         const ssFactor = safetyStockPct / 100;
 
         const items = [
-            { level: 0, indent: 0, item: 'FG-001', gr: grFG, oh: 0 },
-            { level: 1, indent: 1, item: 'SA-001', gr: grSA001, oh: onHandSA001 },
-            { level: 2, indent: 2, item: 'CX-001', gr: grCX001, oh: onHandCX001 },
-            { level: 3, indent: 3, item: 'RM-001', gr: grRM001, oh: onHandRM001 },
-            { level: 1, indent: 1, item: 'SA-002', gr: grSA002, oh: onHandSA002 },
-            { level: 2, indent: 2, item: 'CZ-001', gr: grCZ001, oh: onHandCZ001 },
-            { level: 3, indent: 3, item: 'RM-002', gr: grRM002, oh: onHandRM002 },
+            { level: 0, indent: 0, item: 'FG-001', qtyPer: '-', gr: grFG, oh: 0 },
+            { level: 1, indent: 1, item: 'SA-001', qtyPer: '2', gr: grSA001, oh: onHandSA001 },
+            { level: 2, indent: 2, item: 'CX-001', qtyPer: '3', gr: grCX001, oh: onHandCX001 },
+            { level: 3, indent: 3, item: 'RM-001', qtyPer: '5', gr: grRM001, oh: onHandRM001 },
+            { level: 1, indent: 1, item: 'SA-002', qtyPer: '1', gr: grSA002, oh: onHandSA002 },
+            { level: 2, indent: 2, item: 'CZ-001', qtyPer: '4', gr: grCZ001, oh: onHandCZ001 },
+            { level: 3, indent: 3, item: 'RM-002', qtyPer: '2', gr: grRM002, oh: onHandRM002 },
         ];
 
         return items.map(i => {
@@ -434,6 +434,7 @@ const ProductionPlanningDemo: React.FC = () => {
                                         <tr className="bg-slate-700/50 text-slate-300 text-sm">
                                             <th className="p-3 border-b border-slate-700">Level</th>
                                             <th className="p-3 border-b border-slate-700">Item</th>
+                                            <th className="p-3 border-b border-slate-700 text-center">Qty / Parent</th>
                                             <th className="p-3 border-b border-slate-700 text-right">Gross Req</th>
                                             <th className="p-3 border-b border-slate-700 text-right">On-Hand</th>
                                             <th className="p-3 border-b border-slate-700 text-right">Safety Stock</th>
@@ -450,6 +451,7 @@ const ProductionPlanningDemo: React.FC = () => {
                                                         {row.item}
                                                     </span>
                                                 </td>
+                                                <td className="p-3 border-b border-slate-800 text-center text-slate-400 font-mono">{row.qtyPer}</td>
                                                 <td className="p-3 border-b border-slate-800 text-right font-mono text-slate-300">{row.gr}</td>
                                                 <td className="p-3 border-b border-slate-800 text-right font-mono text-slate-400">{row.oh}</td>
                                                 <td className="p-3 border-b border-slate-800 text-right font-mono text-slate-400">{row.ss}</td>
