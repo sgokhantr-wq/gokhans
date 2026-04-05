@@ -30,10 +30,17 @@ const ProductionPlanningDemo: React.FC = () => {
         let currentStock = startingStock;
         const series = [];
         for (let day = 1; day <= 14; day++) {
+            // Add realistic variability based on the day (pseudo-random but stable pattern)
+            const demandVariation = Math.round(dailyDemand * 0.25 * Math.sin(day * 2) + (day % 3 === 0 ? dailyDemand * 0.15 : -dailyDemand * 0.05));
+            const prodVariation = Math.round(dailyProduction * 0.15 * Math.cos(day * 1.5) - (day % 5 === 0 ? dailyProduction * 0.2 : 0));
+            
+            const actualDemand = Math.max(0, dailyDemand + demandVariation);
+            const actualProduction = Math.max(0, dailyProduction + prodVariation);
+
             // Apply production (receipts)
-            currentStock += dailyProduction;
+            currentStock += actualProduction;
             // Apply demand (issues)
-            currentStock -= dailyDemand;
+            currentStock -= actualDemand;
 
             let status = 'Optimal';
             if (currentStock < minInventory) status = 'Warning: Stockout Risk';
@@ -44,7 +51,8 @@ const ProductionPlanningDemo: React.FC = () => {
                 inventory: currentStock,
                 min: minInventory,
                 max: maxInventory,
-                demand: dailyDemand,
+                demand: actualDemand,
+                production: actualProduction,
                 status
             });
         }
@@ -252,7 +260,7 @@ const ProductionPlanningDemo: React.FC = () => {
                             
                             <label className="block">
                                 <div className="flex justify-between mb-2">
-                                    <span className="text-slate-300 font-medium">Daily Demand</span>
+                                    <span className="text-slate-300 font-medium">Avg Daily Demand</span>
                                     <span className="text-red-400 font-mono">{dailyDemand}</span>
                                 </div>
                                 <input 
@@ -261,12 +269,12 @@ const ProductionPlanningDemo: React.FC = () => {
                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDailyDemand(Number(e.target.value))}
                                     className="w-full accent-red-500"
                                 />
-                                <p className="text-xs text-slate-500 mt-1">Units consumed per day</p>
+                                <p className="text-xs text-slate-500 mt-1">Baseline consumed per day (± variability applied)</p>
                             </label>
 
                             <label className="block">
                                 <div className="flex justify-between mb-2">
-                                    <span className="text-slate-300 font-medium">Daily Production</span>
+                                    <span className="text-slate-300 font-medium">Avg Daily Production</span>
                                     <span className="text-teal-400 font-mono">{dailyProduction}</span>
                                 </div>
                                 <input 
@@ -275,7 +283,7 @@ const ProductionPlanningDemo: React.FC = () => {
                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDailyProduction(Number(e.target.value))}
                                     className="w-full accent-teal-500"
                                 />
-                                <p className="text-xs text-slate-500 mt-1">Units built/received per day</p>
+                                <p className="text-xs text-slate-500 mt-1">Baseline built per day (± variability applied)</p>
                             </label>
                         </div>
 
