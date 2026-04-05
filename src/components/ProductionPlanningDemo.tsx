@@ -51,6 +51,53 @@ const ProductionPlanningDemo: React.FC = () => {
         return series;
     }, [startingStock, dailyDemand, dailyProduction, minInventory, maxInventory]);
 
+    // --- DEMO 3: Multi-Level BOM Demand Netting ---
+    const [bomDemand, setBomDemand] = useState<number>(100);
+    const [safetyStockPct, setSafetyStockPct] = useState<number>(10);
+    const [onHandSA001, setOnHandSA001] = useState<number>(20);
+    const [onHandSA002, setOnHandSA002] = useState<number>(10);
+    const [onHandCX001, setOnHandCX001] = useState<number>(50);
+    const [onHandCZ001, setOnHandCZ001] = useState<number>(30);
+    const [onHandRM001, setOnHandRM001] = useState<number>(200);
+    const [onHandRM002, setOnHandRM002] = useState<number>(100);
+
+    const bomCalculations = useMemo(() => {
+        const grFG = bomDemand;
+        const grSA001 = grFG * 2;
+        const grSA002 = grFG * 1;
+        const grCX001 = grSA001 * 3;
+        const grCZ001 = grSA002 * 4;
+        const grRM001 = grCX001 * 5;
+        const grRM002 = grCZ001 * 2;
+
+        const ssFactor = safetyStockPct / 100;
+
+        const items = [
+            { level: 0, indent: 0, item: 'FG-001', gr: grFG, oh: 0 },
+            { level: 1, indent: 1, item: 'SA-001', gr: grSA001, oh: onHandSA001 },
+            { level: 2, indent: 2, item: 'CX-001', gr: grCX001, oh: onHandCX001 },
+            { level: 3, indent: 3, item: 'RM-001', gr: grRM001, oh: onHandRM001 },
+            { level: 1, indent: 1, item: 'SA-002', gr: grSA002, oh: onHandSA002 },
+            { level: 2, indent: 2, item: 'CZ-001', gr: grCZ001, oh: onHandCZ001 },
+            { level: 3, indent: 3, item: 'RM-002', gr: grRM002, oh: onHandRM002 },
+        ];
+
+        return items.map(i => {
+            const ss = Math.round(i.gr * ssFactor);
+            const netReq = Math.max(0, i.gr - i.oh + ss);
+            return { ...i, ss, netReq, name: i.item };
+        });
+    }, [bomDemand, safetyStockPct, onHandSA001, onHandSA002, onHandCX001, onHandCZ001, onHandRM001, onHandRM002]);
+
+    const totalNetReq = bomCalculations.reduce((sum, item) => sum + item.netReq, 0);
+    const maxNetReq = Math.max(...bomCalculations.map(i => i.netReq));
+    let bomStatus = "All Covered";
+    if (maxNetReq >= 500) {
+        bomStatus = "Critical Shortage";
+    } else if (totalNetReq > 0) {
+        bomStatus = "Partial Shortage";
+    }
+
     return (
         <div className="container mx-auto px-4 py-12 max-w-5xl">
             <div className="mb-12 text-center space-y-4">
@@ -302,6 +349,157 @@ const ProductionPlanningDemo: React.FC = () => {
                                     />
                                 </ComposedChart>
                             </ResponsiveContainer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* --- DEMO 3: Multi-Level BOM Demand Netting --- */}
+            <div className="mt-16 border-t border-slate-800 pt-16 mb-12">
+                <div className="mb-12 text-center space-y-4">
+                    <h2 className="text-3xl md:text-4xl font-mono font-bold text-teal-400">3. Multi-Level BOM Demand Netting</h2>
+                    <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                        Simulate MRP-style demand netting across BOM levels. Explode <span className="text-red-400 font-semibold">Gross Requirements</span> down to components and calculate <span className="text-teal-400 font-semibold">Net Requirements</span> based on inventory.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    {/* Controls */}
+                    <div className="lg:col-span-1 space-y-6">
+                        <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 space-y-6">
+                            <h3 className="text-xl font-mono font-bold text-white border-b border-slate-700 pb-4">Demand & Buffer</h3>
+                            
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium text-sm">FG-001 Demand</span>
+                                    <span className="text-red-400 font-mono text-sm">{bomDemand}</span>
+                                </div>
+                                <input 
+                                    type="range" min="0" max="500" step="10"
+                                    value={bomDemand} 
+                                    onChange={(e) => setBomDemand(Number(e.target.value))}
+                                    className="w-full accent-red-500"
+                                />
+                            </label>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium text-sm">Safety Stock %</span>
+                                    <span className="text-teal-400 font-mono text-sm">{safetyStockPct}%</span>
+                                </div>
+                                <input 
+                                    type="range" min="0" max="50" step="5"
+                                    value={safetyStockPct} 
+                                    onChange={(e) => setSafetyStockPct(Number(e.target.value))}
+                                    className="w-full accent-teal-500"
+                                />
+                            </label>
+                        </div>
+
+                        <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 space-y-6">
+                            <h3 className="text-xl font-mono font-bold text-white border-b border-slate-700 pb-4">On-Hand Inventory</h3>
+                            
+                            {[
+                                { label: 'SA-001', val: onHandSA001, set: setOnHandSA001 },
+                                { label: 'SA-002', val: onHandSA002, set: setOnHandSA002 },
+                                { label: 'CX-001', val: onHandCX001, set: setOnHandCX001 },
+                                { label: 'CZ-001', val: onHandCZ001, set: setOnHandCZ001 },
+                                { label: 'RM-001', val: onHandRM001, set: setOnHandRM001 },
+                                { label: 'RM-002', val: onHandRM002, set: setOnHandRM002 }
+                            ].map((ctrl) => (
+                                <label key={ctrl.label} className="block">
+                                    <div className="flex justify-between mb-1">
+                                        <span className="text-slate-300 text-sm">{ctrl.label}</span>
+                                        <span className="text-slate-400 font-mono text-sm">{ctrl.val}</span>
+                                    </div>
+                                    <input 
+                                        type="range" min="0" max="500" step="10"
+                                        value={ctrl.val} 
+                                        onChange={(e) => ctrl.set(Number(e.target.value))}
+                                        className="w-full h-1 accent-slate-500"
+                                    />
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Output */}
+                    <div className="lg:col-span-3 space-y-6">
+                        {/* BOM Table */}
+                        <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                            <h3 className="text-lg font-mono text-white mb-4">BOM Explosion & Netting</h3>
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="bg-slate-700/50 text-slate-300 text-sm">
+                                            <th className="p-3 border-b border-slate-700">Level</th>
+                                            <th className="p-3 border-b border-slate-700">Item</th>
+                                            <th className="p-3 border-b border-slate-700 text-right">Gross Req</th>
+                                            <th className="p-3 border-b border-slate-700 text-right">On-Hand</th>
+                                            <th className="p-3 border-b border-slate-700 text-right">Safety Stock</th>
+                                            <th className="p-3 border-b border-slate-700 text-right">Net Req</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {bomCalculations.map((row, idx) => (
+                                            <tr key={idx} className={`${idx % 2 === 0 ? 'bg-slate-800/30' : 'bg-transparent'} hover:bg-slate-700/30 transition-colors`}>
+                                                <td className="p-3 border-b border-slate-800 text-slate-400">{row.level}</td>
+                                                <td className="p-3 border-b border-slate-800 text-slate-200">
+                                                    <span style={{ marginLeft: `${row.indent * 1.5}rem` }}>
+                                                        {row.indent > 0 && <span className="text-slate-600 mr-2">└─</span>}
+                                                        {row.item}
+                                                    </span>
+                                                </td>
+                                                <td className="p-3 border-b border-slate-800 text-right font-mono text-slate-300">{row.gr}</td>
+                                                <td className="p-3 border-b border-slate-800 text-right font-mono text-slate-400">{row.oh}</td>
+                                                <td className="p-3 border-b border-slate-800 text-right font-mono text-slate-400">{row.ss}</td>
+                                                <td className={`p-3 border-b border-slate-800 text-right font-mono font-bold ${
+                                                    row.netReq === 0 ? 'text-emerald-400' :
+                                                    row.netReq < 50 ? 'text-amber-400' : 'text-red-400'
+                                                }`}>
+                                                    {row.netReq}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div className="mt-4 pt-4 border-t border-slate-700 flex justify-between items-center">
+                                <span className="text-slate-400 text-sm">Overall Status</span>
+                                <div className="flex items-center space-x-4">
+                                    <span className="text-slate-300 text-sm">Total Net Requirements: <span className="font-mono text-base">{totalNetReq}</span></span>
+                                    <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
+                                        bomStatus === "All Covered" ? "bg-emerald-900/50 text-emerald-400 border border-emerald-800" :
+                                        bomStatus === "Partial Shortage" ? "bg-amber-900/50 text-amber-400 border border-amber-800" :
+                                        "bg-red-900/50 text-red-400 border border-red-800"
+                                    }`}>
+                                        {bomStatus}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Chart */}
+                        <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 h-80 flex flex-col">
+                            <h3 className="text-lg font-mono text-white mb-4">Requirements Chart</h3>
+                            <div className="flex-grow">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <BarChart data={bomCalculations} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
+                                        <XAxis dataKey="name" stroke="#64748b" tick={{fill: '#94a3b8', fontSize: 12}} />
+                                        <YAxis stroke="#64748b" tick={{fill: '#94a3b8'}} />
+                                        <RechartsTooltip 
+                                            contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#f8fafc' }}
+                                            itemStyle={{ color: '#f8fafc' }}
+                                            cursor={{fill: '#1e293b'}}
+                                        />
+                                        <Legend />
+                                        <Bar dataKey="gr" name="Gross Req" fill="#64748b" radius={[4, 4, 0, 0]} />
+                                        <Bar dataKey="netReq" name="Net Req" fill="#14b8a6" radius={[4, 4, 0, 0]} />
+                                    </BarChart>
+                                </ResponsiveContainer>
+                            </div>
                         </div>
                     </div>
                 </div>
