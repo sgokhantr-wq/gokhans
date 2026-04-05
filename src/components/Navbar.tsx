@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Menu, X, Terminal, Linkedin } from 'lucide-react';
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,14 +34,25 @@ const Navbar: React.FC = () => {
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center space-x-2 group">
-                        <div className="p-2 bg-slate-800 rounded group-hover:bg-teal-600 transition-colors">
-                            <Terminal size={24} className="text-teal-400 group-hover:text-white" />
-                        </div>
-                        <span className="text-xl font-bold tracking-tight text-white">
-                            GOKHAN <span className="text-teal-500">SAHIN</span>
-                        </span>
-                    </Link>
+                    <div className="flex items-center space-x-3">
+                        <Link to="/" className="flex items-center space-x-2 group">
+                            <div className="p-2 bg-slate-800 rounded group-hover:bg-teal-600 transition-colors">
+                                <Terminal size={24} className="text-teal-400 group-hover:text-white" />
+                            </div>
+                            <span className="text-xl font-bold tracking-tight text-white">
+                                GOKHAN <span className="text-teal-500">SAHIN</span>
+                            </span>
+                        </Link>
+                        <a
+                            href="https://www.linkedin.com/in/gokhan-sahin-417b8a171/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-1.5 rounded hover:bg-slate-800 transition-colors"
+                            aria-label="LinkedIn profile"
+                        >
+                            <Linkedin size={18} className="text-[#0077b5] hover:text-[#0095d9] transition-colors" />
+                        </a>
+                    </div>
 
                     {/* Desktop Nav */}
                     <div className="hidden md:flex items-center space-x-8">
@@ -59,7 +70,7 @@ const Navbar: React.FC = () => {
                             to="/contact"
                             className="px-4 py-2 text-sm font-semibold text-slate-900 bg-teal-500 rounded hover:bg-teal-400 transition-colors"
                         >
-                            Book a Demo
+                            Hire Me
                         </Link>
                     </div>
 

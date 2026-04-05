@@ -188,13 +188,13 @@ const CentaurusAI: React.FC = () => {
                                     className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-4"
                                 >
                                     <Sparkles className="w-4 h-4 text-cyan-400" />
-                                    <span className="text-sm text-cyan-300 font-medium">Next-Gen AI Workforce</span>
+                                    <span className="text-sm text-cyan-300 font-medium">Personal Project · In Active Use</span>
                                 </motion.div>
                                 <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
                                     Centaurus AI
                                 </h1>
                                 <p className="mt-4 text-xl md:text-2xl text-slate-300 max-w-2xl font-light">
-                                    Your Intelligent Workforce — Powered by Open Source AI
+                                    An AI assistant I built and deployed — currently automating sales quote creation from customer emails
                                 </p>
                             </div>
                             <motion.div
@@ -217,8 +217,8 @@ const CentaurusAI: React.FC = () => {
                             transition={{ delay: 0.6, duration: 1 }}
                             className="text-lg text-slate-400 max-w-3xl mb-12"
                         >
-                            A fine-tuned AI employee that adapts to your business and performs at the level of your best team members.
-                            <span className="text-cyan-400 font-medium"> Private, customizable, and future-proof.</span>
+                            Centaurus is a personal AI project I designed, built, and deployed at my current workplace. Sales people forward customer inquiry emails — Centaurus reads them, extracts the requirements, and automatically generates structured sales quotes.
+                            <span className="text-cyan-400 font-medium"> I'm bringing this capability to my next company.</span>
                         </motion.p>
 
                         {/* 3D Globe Canvas */}
@@ -272,7 +272,7 @@ const CentaurusAI: React.FC = () => {
                                 className="group px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold shadow-lg shadow-cyan-500/30 transition-all duration-300 hover:shadow-cyan-500/50 hover:scale-105"
                             >
                                 <span className="flex items-center gap-2">
-                                    Request Early Access
+                                    Let's Talk About This
                                     <Zap className="w-4 h-4 group-hover:animate-pulse" />
                                 </span>
                             </Link>
@@ -305,7 +305,7 @@ const CentaurusAI: React.FC = () => {
                         className="max-w-6xl mx-auto"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-                            Enterprise-Grade AI Capabilities
+                            What Centaurus Can Do
                         </h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

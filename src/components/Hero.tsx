@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
                             </span>
-                            <span>Available for projects</span>
+                            <span>Open to Roles · Manufacturing · Planning · Ops &amp; Tech</span>
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white">
@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
                         </h1>
 
                         <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed">
-                            Production planning, Power BI dashboards, and Python automation. I streamline material flows, reduce errors, and build systems that work for people.
+                            I sit at the cross of production excellence and technology. I plan, automate, and optimize — from the shop floor to the ERP layer — and I'm looking to own the whole operation, not just one piece of it.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
@@ -50,17 +50,17 @@ const Hero: React.FC = () => {
                             <div className="space-y-2">
                                 <Database className="h-6 w-6 text-slate-500" />
                                 <h3 className="font-semibold text-white">ERP Integration</h3>
-                                <p className="text-xs text-slate-500">Business Central, APIs, SQL Sync</p>
+                                <p className="text-xs text-slate-500">Production Planning · Manufacturing Engineering</p>
                             </div>
                             <div className="space-y-2">
                                 <Bot className="h-6 w-6 text-slate-500" />
                                 <h3 className="font-semibold text-white">Automation</h3>
-                                <p className="text-xs text-slate-500">Python, Vision Agents, PyAutoGUI</p>
+                                <p className="text-xs text-slate-500">Operations &amp; Technology · Process Efficiency</p>
                             </div>
                             <div className="space-y-2">
                                 <BarChart3 className="h-6 w-6 text-slate-500" />
                                 <h3 className="font-semibold text-white">Analytics</h3>
-                                <p className="text-xs text-slate-500">Power BI, Forecasting, Modeling</p>
+                                <p className="text-xs text-slate-500">Data-Driven Decisions · End-to-End Visibility</p>
                             </div>
                         </div>
                     </div>
