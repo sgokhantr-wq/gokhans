@@ -218,7 +218,7 @@ const CentaurusAI: React.FC = () => {
                             className="text-lg text-slate-400 max-w-3xl mb-12"
                         >
                             Centaurus is a personal AI project I designed, built, and deployed at my current workplace. Sales people forward customer inquiry emails — Centaurus reads them, extracts the requirements, and automatically generates structured sales quotes.
-                            <span className="text-cyan-400 font-medium"> I'm bringing this capability to my next company.</span>
+                            <span className="text-cyan-400 font-medium"> I bring this capability wherever I work.</span>
                         </motion.p>
 
                         {/* 3D Globe Canvas */}
