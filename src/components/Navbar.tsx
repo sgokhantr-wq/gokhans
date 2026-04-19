@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
         { name: 'Centaurus AI', path: '/centaurus' },
         { name: 'Skill Set', path: '/skills' },
         { name: 'Portfolio', path: '/portfolio' },
-        { name: 'Contact / Resume', path: '/contact' },
+        { name: 'Contact', path: '/contact' },
     ];
 
     const isActive = (path: string) => location.pathname === path;
