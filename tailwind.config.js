@@ -10,7 +10,7 @@ export default {
         slate: {
           850: '#1e293b',
           900: '#0f172a',
-          950: '#09090f',
+          950: '#0c0c0e',
         },
       },
       animation: {

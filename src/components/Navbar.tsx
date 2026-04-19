@@ -36,11 +36,11 @@ const Navbar: React.FC = () => {
                     {/* Logo */}
                     <div className="flex items-center space-x-3">
                         <Link to="/" className="flex items-center space-x-2 group">
-                            <div className="p-2 bg-slate-800 rounded group-hover:bg-violet-600 transition-colors">
-                                <Terminal size={24} className="text-violet-400 group-hover:text-white" />
+                            <div className="p-2 bg-slate-800 rounded group-hover:bg-purple-600 transition-colors">
+                                <Terminal size={24} className="text-blue-400 group-hover:text-white" />
                             </div>
                             <span className="text-xl font-bold tracking-tight text-white">
-                                GOKHAN <span className="text-violet-500">SAHIN</span>
+                                GOKHAN <span className="text-blue-500">SAHIN</span>
                             </span>
                         </Link>
                         <a
@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`text-sm font-medium transition-colors hover:text-violet-400 ${isActive(link.path) ? 'text-violet-400' : 'text-slate-400'
+                                className={`text-sm font-medium transition-colors hover:text-blue-400 ${isActive(link.path) ? 'text-blue-400' : 'text-slate-400'
                                     }`}
                             >
                                 {link.name}
@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
                         ))}
                         <Link
                             to="/contact"
-                            className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-violet-600 to-purple-600 rounded-lg hover:from-violet-500 hover:to-purple-500 transition-all duration-300 shadow-md shadow-violet-500/20"
+                            className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-purple-600 rounded-lg hover:from-blue-500 hover:to-purple-500 transition-all duration-300 shadow-md shadow-blue-500/20"
                         >
                             Hire Me
                         </Link>
@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
                                 className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(link.path)
-                                    ? 'bg-slate-800 text-violet-400'
+                                    ? 'bg-slate-800 text-blue-400'
                                     : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                                     }`}
                             >

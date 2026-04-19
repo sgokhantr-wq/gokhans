@@ -18,23 +18,18 @@ const Contact: React.FC = () => {
 
     return (
         <div className="relative min-h-screen">
-            {/* Background */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(124,58,237,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(124,58,237,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
-            <div className="absolute top-0 right-1/4 w-[600px] h-[500px] bg-violet-700/6 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-purple-700/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:72px_72px] pointer-events-none" />
+            <div className="absolute top-0 right-1/4 w-[500px] h-[400px] bg-blue-900/6 rounded-full blur-3xl pointer-events-none" />
 
             <section className="container mx-auto px-4 py-16 max-w-5xl relative z-10">
 
-                {/* Page header */}
                 <motion.div {...fadeUp(0)} className="mb-14">
-                    <span className="inline-block text-xs font-mono tracking-widest text-violet-400 mb-5 border border-violet-500/30 rounded-full px-4 py-1.5 bg-violet-500/5">
+                    <span className="inline-block text-xs font-mono tracking-widest text-blue-400 mb-5 border border-blue-800/40 rounded-full px-4 py-1.5 bg-blue-950/40">
                         GET IN TOUCH
                     </span>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight tracking-tight">
                         Ready to{' '}
-                        <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
-                            Contribute
-                        </span>
+                        <span className="text-blue-400">Contribute</span>
                         {' '}from Day One
                     </h2>
                     <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
@@ -44,72 +39,65 @@ const Contact: React.FC = () => {
 
                 <div className="grid lg:grid-cols-2 gap-10">
 
-                    {/* Left Column */}
-                    <motion.div {...fadeUp(0.15)} className="space-y-6">
+                    <motion.div {...fadeUp(0.15)} className="space-y-4">
+                        <a
+                            href="mailto:gokusahin@gmail.com"
+                            className="flex items-center gap-4 p-4 rounded-xl bg-[#111116] border border-slate-800 hover:border-blue-700/40 hover:bg-[#13131a] transition-all duration-300 group"
+                        >
+                            <div className="p-2.5 rounded-lg bg-blue-950/60 border border-blue-800/30 flex-shrink-0">
+                                <Mail size={16} className="text-blue-400" />
+                            </div>
+                            <div>
+                                <p className="text-xs text-slate-600 mb-0.5 font-mono uppercase tracking-wider">Email</p>
+                                <p className="text-sm text-slate-300 group-hover:text-blue-300 transition-colors font-medium">gokusahin@gmail.com</p>
+                            </div>
+                        </a>
 
-                        {/* Contact links */}
-                        <div className="space-y-3">
-                            <a
-                                href="mailto:gokusahin@gmail.com"
-                                className="flex items-center gap-3 p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-violet-500/40 hover:bg-violet-900/10 transition-all duration-300 group"
-                            >
-                                <div className="p-2 rounded-lg bg-violet-500/10 border border-violet-500/20 group-hover:bg-violet-500/20 transition-colors flex-shrink-0">
-                                    <Mail size={16} className="text-violet-400" />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-slate-500 mb-0.5">Email</p>
-                                    <p className="text-sm text-slate-200 group-hover:text-violet-300 transition-colors font-medium">gokusahin@gmail.com</p>
-                                </div>
-                            </a>
+                        <a
+                            href="https://www.linkedin.com/in/gokhan-sahin-417b8a171/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-4 p-4 rounded-xl bg-[#111116] border border-slate-800 hover:border-[#0077b5]/40 hover:bg-[#13131a] transition-all duration-300 group"
+                        >
+                            <div className="p-2.5 rounded-lg bg-[#0077b5]/10 border border-[#0077b5]/20 flex-shrink-0">
+                                <Linkedin size={16} className="text-[#0077b5]" />
+                            </div>
+                            <div>
+                                <p className="text-xs text-slate-600 mb-0.5 font-mono uppercase tracking-wider">LinkedIn</p>
+                                <p className="text-sm text-slate-300 group-hover:text-[#0095d9] transition-colors font-medium">gokhan-sahin-417b8a171</p>
+                            </div>
+                        </a>
 
-                            <a
-                                href="https://www.linkedin.com/in/gokhan-sahin-417b8a171/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-3 p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-[#0077b5]/40 hover:bg-[#0077b5]/5 transition-all duration-300 group"
-                            >
-                                <div className="p-2 rounded-lg bg-[#0077b5]/10 border border-[#0077b5]/20 group-hover:bg-[#0077b5]/20 transition-colors flex-shrink-0">
-                                    <Linkedin size={16} className="text-[#0077b5]" />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-slate-500 mb-0.5">LinkedIn</p>
-                                    <p className="text-sm text-slate-200 group-hover:text-[#0095d9] transition-colors font-medium">gokhan-sahin-417b8a171</p>
-                                </div>
-                            </a>
-
-                            <div className="flex items-center gap-3 p-4 rounded-xl bg-slate-900/40 border border-slate-800/60">
-                                <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 flex-shrink-0">
-                                    <MapPin size={16} className="text-slate-500" />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-slate-500 mb-0.5">Availability</p>
-                                    <p className="text-sm text-slate-400 font-medium">Open to remote and on-site roles</p>
-                                </div>
+                        <div className="flex items-center gap-4 p-4 rounded-xl bg-[#111116] border border-slate-800/60">
+                            <div className="p-2.5 rounded-lg bg-slate-800/60 border border-slate-700/30 flex-shrink-0">
+                                <MapPin size={16} className="text-slate-500" />
+                            </div>
+                            <div>
+                                <p className="text-xs text-slate-600 mb-0.5 font-mono uppercase tracking-wider">Availability</p>
+                                <p className="text-sm text-slate-400 font-medium">Open to remote and on-site roles</p>
                             </div>
                         </div>
 
-                        {/* Resume download */}
-                        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm">
-                            <h3 className="text-base font-semibold text-white flex items-center gap-2 mb-4">
-                                <FileText className="text-violet-400" size={18} />
+                        <div className="bg-[#111116] border border-slate-800 rounded-2xl p-6 mt-2">
+                            <h3 className="text-sm font-semibold text-slate-300 flex items-center gap-2 mb-4">
+                                <FileText className="text-blue-400" size={16} />
                                 Resume
                             </h3>
                             <a
                                 href="/resume.pdf"
                                 download="Gokhan_Sahin_Resume.pdf"
-                                className="flex items-center justify-between p-4 bg-slate-950/80 border border-slate-800 rounded-xl hover:border-violet-500/40 hover:bg-violet-900/10 transition-all duration-300 group"
+                                className="flex items-center justify-between p-4 bg-black/40 border border-slate-800/80 rounded-xl hover:border-blue-700/40 hover:bg-blue-950/10 transition-all duration-300 group"
                             >
                                 <div>
-                                    <div className="text-slate-200 font-medium text-sm group-hover:text-violet-300 transition-colors">Download Full CV</div>
-                                    <div className="text-xs text-slate-500 mt-0.5">PDF · Certifications and project timeline included</div>
+                                    <div className="text-slate-200 font-medium text-sm group-hover:text-blue-300 transition-colors">Download Full CV</div>
+                                    <div className="text-xs text-slate-600 mt-0.5">PDF · Certifications and project timeline</div>
                                 </div>
-                                <FileText className="text-slate-600 group-hover:text-violet-400 transition-colors flex-shrink-0" size={16} />
+                                <FileText className="text-slate-700 group-hover:text-blue-400 transition-colors flex-shrink-0" size={15} />
                             </a>
                         </div>
 
-                        {/* What I bring */}
-                        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm">
-                            <h3 className="text-base font-semibold text-white mb-4">What I Bring</h3>
+                        <div className="bg-[#111116] border border-slate-800 rounded-2xl p-6">
+                            <h3 className="text-sm font-semibold text-slate-300 mb-4">What I Bring</h3>
                             <div className="space-y-3">
                                 {[
                                     'Production planning and MRP configuration',
@@ -118,27 +106,26 @@ const Contact: React.FC = () => {
                                     'AI tools deployed for operational workflows',
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-4 h-4 text-violet-500 flex-shrink-0 mt-0.5" />
-                                        <span className="text-sm text-slate-400 leading-relaxed">{item}</span>
+                                        <CheckCircle2 className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                                        <span className="text-sm text-slate-500 leading-relaxed">{item}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     </motion.div>
 
-                    {/* Right Column: Form */}
                     <motion.div {...fadeUp(0.25)}>
-                        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 backdrop-blur-sm h-full">
+                        <div className="bg-[#111116] border border-slate-800 rounded-2xl p-8 h-full">
                             {submitted ? (
                                 <div className="h-full flex flex-col items-center justify-center text-center space-y-4 min-h-[420px]">
-                                    <div className="w-16 h-16 bg-violet-500/10 rounded-full flex items-center justify-center border border-violet-500/20">
-                                        <CheckCircle2 className="w-8 h-8 text-violet-400" />
+                                    <div className="w-16 h-16 bg-blue-950/60 rounded-full flex items-center justify-center border border-blue-800/40">
+                                        <CheckCircle2 className="w-8 h-8 text-blue-400" />
                                     </div>
                                     <h3 className="text-xl font-bold text-white">Message Sent</h3>
-                                    <p className="text-slate-400 max-w-xs text-sm leading-relaxed">I'll review and get back to you within 24 hours.</p>
+                                    <p className="text-slate-500 max-w-xs text-sm leading-relaxed">I'll review and get back to you within 24 hours.</p>
                                     <button
                                         onClick={() => setSubmitted(false)}
-                                        className="text-violet-400 hover:text-violet-300 text-sm font-medium mt-4 transition-colors"
+                                        className="text-blue-400 hover:text-blue-300 text-sm font-medium mt-4 transition-colors"
                                     >
                                         Send another message
                                     </button>
@@ -152,37 +139,29 @@ const Contact: React.FC = () => {
 
                                     <div className="grid md:grid-cols-2 gap-4">
                                         <div className="space-y-1.5">
-                                            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Name</label>
-                                            <input
-                                                required
-                                                type="text"
-                                                className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all"
-                                                placeholder="Your name"
-                                            />
+                                            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Name</label>
+                                            <input required type="text"
+                                                className="w-full bg-black/40 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-700 focus:outline-none focus:border-blue-600/60 focus:ring-1 focus:ring-blue-600/20 transition-all"
+                                                placeholder="Your name" />
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Company</label>
-                                            <input
-                                                type="text"
-                                                className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all"
-                                                placeholder="Company name"
-                                            />
+                                            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Company</label>
+                                            <input type="text"
+                                                className="w-full bg-black/40 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-700 focus:outline-none focus:border-blue-600/60 focus:ring-1 focus:ring-blue-600/20 transition-all"
+                                                placeholder="Company name" />
                                         </div>
                                     </div>
 
                                     <div className="space-y-1.5">
-                                        <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Email</label>
-                                        <input
-                                            required
-                                            type="email"
-                                            className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all"
-                                            placeholder="your@email.com"
-                                        />
+                                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Email</label>
+                                        <input required type="email"
+                                            className="w-full bg-black/40 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-700 focus:outline-none focus:border-blue-600/60 focus:ring-1 focus:ring-blue-600/20 transition-all"
+                                            placeholder="your@email.com" />
                                     </div>
 
                                     <div className="space-y-1.5">
-                                        <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Topic</label>
-                                        <select className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all appearance-none">
+                                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Topic</label>
+                                        <select className="w-full bg-black/40 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-600/60 focus:ring-1 focus:ring-blue-600/20 transition-all appearance-none">
                                             <option>Job Opportunity</option>
                                             <option>ERP Implementation Project</option>
                                             <option>Automation Consultation</option>
@@ -191,23 +170,20 @@ const Contact: React.FC = () => {
                                     </div>
 
                                     <div className="space-y-1.5">
-                                        <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Message</label>
-                                        <textarea
-                                            rows={4}
-                                            className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all resize-none"
-                                            placeholder="Tell me about the role, project, or what you need..."
-                                        />
+                                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Message</label>
+                                        <textarea rows={4}
+                                            className="w-full bg-black/40 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-700 focus:outline-none focus:border-blue-600/60 focus:ring-1 focus:ring-blue-600/20 transition-all resize-none"
+                                            placeholder="Tell me about the role, project, or what you need..." />
                                     </div>
 
-                                    <button
-                                        type="submit"
-                                        className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-bold py-3.5 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 hover:scale-[1.01]"
+                                    <button type="submit"
+                                        className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-blue-900/30 hover:scale-[1.01]"
                                     >
                                         <Send className="w-4 h-4 mr-2" />
                                         Send Message
                                     </button>
 
-                                    <p className="text-xs text-slate-600 text-center">No spam. I respond to every message personally.</p>
+                                    <p className="text-xs text-slate-700 text-center">No spam. I respond to every message personally.</p>
                                 </form>
                             )}
                         </div>

@@ -20,7 +20,7 @@ const App: React.FC = () => {
     return (
         <HashRouter>
             <ScrollToTop />
-            <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-violet-500 selection:text-white flex flex-col">
+            <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-blue-600 selection:text-white flex flex-col">
                 <Navbar />
                 <main className="flex-grow pt-20">
                     <Routes>

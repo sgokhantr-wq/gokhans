@@ -18,9 +18,9 @@ const sections = [
     label: '01',
     title: 'Data Engineering & Python',
     subtitle: 'Building robust ETL pipelines, automating data workflows, and transforming raw files into business-ready intelligence.',
-    color: 'from-violet-500 to-purple-500',
-    borderColor: 'border-violet-500/30',
-    glowColor: 'shadow-violet-500/10',
+    color: 'from-blue-600 to-blue-500',
+    borderColor: 'border-blue-700/30',
+    glowColor: 'shadow-blue-800/20',
     skills: [
       { icon: Database, title: 'Data Engineering & ETL', desc: 'Full Extract → Transform → Load pipelines — reading raw messy CSVs, cleaning them, and delivering structured, consumption-ready files.' },
       { icon: Code2, title: 'Python Programming', desc: 'Working with csv, pandas, re, os — writing multi-phase scripts with control flow, string manipulation, and file I/O.' },
@@ -40,8 +40,8 @@ const sections = [
     title: 'Manufacturing ERP & Operations',
     subtitle: 'Designing and operating enterprise manufacturing systems across Business Central, Dynamics AX, MRP, and MIL-SPEC production environments.',
     color: 'from-violet-600 to-indigo-500',
-    borderColor: 'border-violet-500/30',
-    glowColor: 'shadow-violet-500/10',
+    borderColor: 'border-blue-700/30',
+    glowColor: 'shadow-blue-800/20',
     skills: [
       { icon: Factory, title: 'Manufacturing ERP Architecture', desc: 'Designing end-to-end ERP systems, including architecture development, data transition, and data validation for Business Central v27+.' },
       { icon: MonitorSmartphone, title: 'Microsoft Dynamics 365 BC', desc: 'Deep functional expertise in BC v27+: production orders, planning worksheets, subcontracting, standard costing, and item variants.' },
@@ -173,7 +173,7 @@ const ScrollProgress: React.FC = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-[100] h-0.5 bg-slate-800">
       <motion.div
-        className="h-full bg-gradient-to-r from-violet-500 via-violet-500 to-amber-500"
+        className="h-full bg-gradient-to-r from-blue-600 via-slate-500 to-amber-500"
         style={{ width: `${progress}%` }}
         transition={{ duration: 0.05 }}
       />
@@ -187,7 +187,7 @@ const HeroBanner: React.FC = () => (
     {/* Background grid */}
     <div className="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.04)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
     {/* Glow orbs */}
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-800/8 rounded-full blur-3xl pointer-events-none" />
 
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -195,12 +195,12 @@ const HeroBanner: React.FC = () => (
       transition={{ duration: 0.8 }}
       className="relative max-w-4xl mx-auto"
     >
-      <span className="inline-block text-xs font-mono tracking-widest text-violet-400 mb-4 border border-violet-500/30 rounded-full px-4 py-1.5 bg-violet-500/5">
+      <span className="inline-block text-xs font-mono tracking-widest text-blue-400 mb-4 border border-blue-700/30 rounded-full px-4 py-1.5 bg-blue-950/30">
         FULL SKILL PROFILE
       </span>
       <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
         What I Bring to{' '}
-        <span className="bg-gradient-to-r from-violet-400 via-violet-400 to-amber-400 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-blue-400 via-slate-300 to-amber-400 bg-clip-text text-transparent">
           Every Role
         </span>
       </h1>
@@ -212,10 +212,10 @@ const HeroBanner: React.FC = () => (
       {/* Stat pills */}
       <div className="flex flex-wrap justify-center gap-4 mt-10">
         {[
-          { label: 'Skills Documented', value: '30+', color: 'text-violet-400' },
-          { label: 'ERP Systems', value: '4+', color: 'text-violet-400' },
+          { label: 'Skills Documented', value: '30+', color: 'text-blue-400' },
+          { label: 'ERP Systems', value: '4+', color: 'text-blue-400' },
           { label: 'Countries Worked', value: '4', color: 'text-amber-400' },
-          { label: 'Order Lines / Month', value: '2,400+', color: 'text-violet-400' },
+          { label: 'Order Lines / Month', value: '2,400+', color: 'text-blue-400' },
         ].map((s) => (
           <div key={s.label} className="px-5 py-3 bg-slate-900 border border-slate-700 rounded-xl text-center">
             <p className={`text-xl font-bold font-mono ${s.color}`}>{s.value}</p>
@@ -231,7 +231,7 @@ const HeroBanner: React.FC = () => (
         className="mt-12 flex flex-col items-center gap-2 text-slate-600"
       >
         <span className="text-xs tracking-widest font-mono">SCROLL TO EXPLORE</span>
-        <svg width="16" height="20" viewBox="0 0 16 24" fill="none" className="text-violet-500">
+        <svg width="16" height="20" viewBox="0 0 16 24" fill="none" className="text-blue-500">
           <path d="M8 0v16M1 10l7 7 7-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </motion.div>
@@ -288,7 +288,7 @@ const SkillSet: React.FC = () => (
         </h3>
         <a
           href="#/contact"
-          className="inline-block px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-violet-500/20"
+          className="inline-block px-8 py-3 bg-gradient-to-r bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-blue-900/30"
         >
           Get in Touch
         </a>

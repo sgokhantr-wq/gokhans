@@ -40,70 +40,63 @@ const projects: Project[] = [
 
 type IconConfig = {
     icon: React.ReactNode;
-    accent: string;
-    tagBg: string;
-    tagText: string;
-    glow: string;
     borderHover: string;
     iconBg: string;
+    tagBg: string;
+    tagText: string;
     metricColor: string;
+    barColor: string;
 };
 
 const iconConfig: Record<string, IconConfig> = {
     erp: {
-        icon: <Database className="w-5 h-5 text-violet-300" />,
-        accent: 'from-violet-600 to-purple-600',
-        tagBg: 'bg-violet-500/10 border-violet-500/20',
-        tagText: 'text-violet-300',
-        glow: 'hover:shadow-violet-500/10',
-        borderHover: 'hover:border-violet-500/40',
-        iconBg: 'bg-violet-500/10',
-        metricColor: 'text-violet-400',
+        icon: <Database className="w-5 h-5 text-blue-400" />,
+        borderHover: 'hover:border-blue-700/50',
+        iconBg: 'bg-blue-950/60 border-blue-800/30',
+        tagBg: 'bg-blue-950/50 border-blue-800/30',
+        tagText: 'text-blue-300',
+        metricColor: 'text-blue-400',
+        barColor: 'bg-blue-700',
     },
     auto: {
-        icon: <Cog className="w-5 h-5 text-emerald-300" />,
-        accent: 'from-emerald-600 to-green-600',
-        tagBg: 'bg-emerald-500/10 border-emerald-500/20',
-        tagText: 'text-emerald-300',
-        glow: 'hover:shadow-emerald-500/10',
-        borderHover: 'hover:border-emerald-500/40',
-        iconBg: 'bg-emerald-500/10',
-        metricColor: 'text-emerald-400',
+        icon: <Cog className="w-5 h-5 text-slate-300" />,
+        borderHover: 'hover:border-slate-600',
+        iconBg: 'bg-slate-800/60 border-slate-700/30',
+        tagBg: 'bg-slate-800/60 border-slate-700/30',
+        tagText: 'text-slate-300',
+        metricColor: 'text-amber-400',
+        barColor: 'bg-slate-600',
     },
     bi: {
         icon: <Layout className="w-5 h-5 text-blue-300" />,
-        accent: 'from-blue-600 to-indigo-600',
-        tagBg: 'bg-blue-500/10 border-blue-500/20',
+        borderHover: 'hover:border-blue-800/50',
+        iconBg: 'bg-blue-950/60 border-blue-900/30',
+        tagBg: 'bg-blue-950/50 border-blue-900/30',
         tagText: 'text-blue-300',
-        glow: 'hover:shadow-blue-500/10',
-        borderHover: 'hover:border-blue-500/40',
-        iconBg: 'bg-blue-500/10',
         metricColor: 'text-blue-400',
+        barColor: 'bg-blue-800',
     },
 };
 
 const Portfolio: React.FC = () => {
     return (
         <div className="relative min-h-screen">
-            {/* Background */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(124,58,237,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(124,58,237,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-violet-700/6 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:72px_72px] pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-blue-900/6 rounded-full blur-3xl pointer-events-none" />
 
             <section className="container mx-auto px-4 py-16 relative z-10">
-
-                {/* Page header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7 }}
                     className="max-w-3xl mb-16"
                 >
-                    <span className="inline-block text-xs font-mono tracking-widest text-violet-400 mb-5 border border-violet-500/30 rounded-full px-4 py-1.5 bg-violet-500/5">
+                    <span className="inline-block text-xs font-mono tracking-widest text-blue-400 mb-5 border border-blue-800/40 rounded-full px-4 py-1.5 bg-blue-950/40">
                         SELECTED WORK
                     </span>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight tracking-tight">
                         Built to Solve{' '}
-                        <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
+                        <span className="text-blue-400">
                             Real Problems
                         </span>
                     </h2>
@@ -112,8 +105,7 @@ const Portfolio: React.FC = () => {
                     </p>
                 </motion.div>
 
-                {/* Project cards */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-5">
                     {projects.map((project, idx) => {
                         const cfg = iconConfig[project.iconType] ?? iconConfig.auto;
                         return (
@@ -122,42 +114,33 @@ const Portfolio: React.FC = () => {
                                 initial={{ opacity: 0, y: 40 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.55, delay: idx * 0.1, ease: 'easeOut' }}
-                                className={`group relative bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden hover:shadow-xl ${cfg.glow} ${cfg.borderHover} transition-all duration-300 backdrop-blur-sm`}
+                                className={`group relative bg-[#111116] border border-slate-800 rounded-2xl overflow-hidden ${cfg.borderHover} hover:bg-[#13131a] transition-all duration-300`}
                             >
-                                {/* Top accent line */}
-                                <div className={`h-[2px] w-full bg-gradient-to-r ${cfg.accent} opacity-50 group-hover:opacity-100 transition-opacity duration-300`} />
-
-                                {/* Hover gradient overlay */}
-                                <div className={`absolute inset-0 bg-gradient-to-br ${cfg.accent} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300 pointer-events-none`} />
-
                                 <div className="p-7">
-                                    {/* Icon */}
-                                    <div className={`inline-flex p-3 rounded-xl ${cfg.iconBg} mb-5 border border-white/5`}>
+                                    <div className={`inline-flex p-2.5 rounded-xl ${cfg.iconBg} mb-5 border`}>
                                         {cfg.icon}
                                     </div>
 
-                                    <h3 className="text-xl font-bold text-slate-100 mb-3 leading-snug group-hover:text-white transition-colors">
+                                    <h3 className="text-lg font-bold text-slate-100 mb-3 leading-snug group-hover:text-white transition-colors">
                                         {project.title}
                                     </h3>
 
-                                    <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                                    <p className="text-slate-500 text-sm mb-6 leading-relaxed">
                                         {project.summary}
                                     </p>
 
-                                    {/* Tags */}
                                     <div className="flex flex-wrap gap-2 mb-6">
                                         {project.tags.map(tag => (
                                             <span
                                                 key={tag}
-                                                className={`px-3 py-1 ${cfg.tagBg} ${cfg.tagText} text-xs rounded-lg font-medium border`}
+                                                className={`px-3 py-1 ${cfg.tagBg} ${cfg.tagText} text-xs rounded-lg font-mono border`}
                                             >
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
 
-                                    {/* Metrics */}
-                                    <div className="pt-5 border-t border-slate-800 space-y-2.5">
+                                    <div className="pt-5 border-t border-slate-800/60 space-y-2.5">
                                         {project.metrics.map((metric, i) => (
                                             <div key={i} className="flex items-center gap-2.5">
                                                 <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 ${cfg.metricColor}`} />
