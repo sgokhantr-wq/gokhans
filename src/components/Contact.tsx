@@ -19,20 +19,20 @@ const Contact: React.FC = () => {
     return (
         <div className="relative min-h-screen">
             {/* Background */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
-            <div className="absolute top-0 right-1/4 w-[600px] h-[500px] bg-teal-500/18 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-emerald-500/12 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(124,58,237,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(124,58,237,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
+            <div className="absolute top-0 right-1/4 w-[600px] h-[500px] bg-violet-700/6 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-purple-700/5 rounded-full blur-3xl pointer-events-none" />
 
             <section className="container mx-auto px-4 py-16 max-w-5xl relative z-10">
 
                 {/* Page header */}
                 <motion.div {...fadeUp(0)} className="mb-14">
-                    <span className="inline-block text-xs font-mono tracking-widest text-teal-300 mb-5 border border-teal-500/50 rounded-full px-4 py-1.5 bg-teal-500/10">
+                    <span className="inline-block text-xs font-mono tracking-widest text-violet-400 mb-5 border border-violet-500/30 rounded-full px-4 py-1.5 bg-violet-500/5">
                         GET IN TOUCH
                     </span>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight tracking-tight">
                         Ready to{' '}
-                        <span className="bg-gradient-to-r from-teal-300 to-emerald-400 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
                             Contribute
                         </span>
                         {' '}from Day One
@@ -51,14 +51,14 @@ const Contact: React.FC = () => {
                         <div className="space-y-3">
                             <a
                                 href="mailto:gokusahin@gmail.com"
-                                className="flex items-center gap-3 p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-teal-500/40 hover:bg-slate-800/60 transition-all duration-300 group"
+                                className="flex items-center gap-3 p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-violet-500/40 hover:bg-violet-900/10 transition-all duration-300 group"
                             >
-                                <div className="p-2 rounded-lg bg-teal-500/10 border border-teal-500/20 group-hover:bg-teal-500/20 transition-colors flex-shrink-0">
-                                    <Mail size={16} className="text-teal-400" />
+                                <div className="p-2 rounded-lg bg-violet-500/10 border border-violet-500/20 group-hover:bg-violet-500/20 transition-colors flex-shrink-0">
+                                    <Mail size={16} className="text-violet-400" />
                                 </div>
                                 <div>
                                     <p className="text-xs text-slate-500 mb-0.5">Email</p>
-                                    <p className="text-sm text-slate-200 group-hover:text-teal-400 transition-colors font-medium">gokusahin@gmail.com</p>
+                                    <p className="text-sm text-slate-200 group-hover:text-violet-300 transition-colors font-medium">gokusahin@gmail.com</p>
                                 </div>
                             </a>
 
@@ -66,7 +66,7 @@ const Contact: React.FC = () => {
                                 href="https://www.linkedin.com/in/gokhan-sahin-417b8a171/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-[#0077b5]/40 hover:bg-slate-800/60 transition-all duration-300 group"
+                                className="flex items-center gap-3 p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-[#0077b5]/40 hover:bg-[#0077b5]/5 transition-all duration-300 group"
                             >
                                 <div className="p-2 rounded-lg bg-[#0077b5]/10 border border-[#0077b5]/20 group-hover:bg-[#0077b5]/20 transition-colors flex-shrink-0">
                                     <Linkedin size={16} className="text-[#0077b5]" />
@@ -91,19 +91,19 @@ const Contact: React.FC = () => {
                         {/* Resume download */}
                         <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm">
                             <h3 className="text-base font-semibold text-white flex items-center gap-2 mb-4">
-                                <FileText className="text-teal-500" size={18} />
+                                <FileText className="text-violet-400" size={18} />
                                 Resume
                             </h3>
                             <a
                                 href="/resume.pdf"
                                 download="Gokhan_Sahin_Resume.pdf"
-                                className="flex items-center justify-between p-4 bg-slate-950/80 border border-slate-800 rounded-xl hover:border-teal-500/50 hover:bg-slate-900 transition-all duration-300 group"
+                                className="flex items-center justify-between p-4 bg-slate-950/80 border border-slate-800 rounded-xl hover:border-violet-500/40 hover:bg-violet-900/10 transition-all duration-300 group"
                             >
                                 <div>
-                                    <div className="text-slate-200 font-medium text-sm group-hover:text-teal-400 transition-colors">Download Full CV</div>
+                                    <div className="text-slate-200 font-medium text-sm group-hover:text-violet-300 transition-colors">Download Full CV</div>
                                     <div className="text-xs text-slate-500 mt-0.5">PDF · Certifications and project timeline included</div>
                                 </div>
-                                <FileText className="text-slate-600 group-hover:text-teal-400 transition-colors flex-shrink-0" size={16} />
+                                <FileText className="text-slate-600 group-hover:text-violet-400 transition-colors flex-shrink-0" size={16} />
                             </a>
                         </div>
 
@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
                                     'AI tools deployed for operational workflows',
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" />
+                                        <CheckCircle2 className="w-4 h-4 text-violet-500 flex-shrink-0 mt-0.5" />
                                         <span className="text-sm text-slate-400 leading-relaxed">{item}</span>
                                     </div>
                                 ))}
@@ -131,14 +131,14 @@ const Contact: React.FC = () => {
                         <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 backdrop-blur-sm h-full">
                             {submitted ? (
                                 <div className="h-full flex flex-col items-center justify-center text-center space-y-4 min-h-[420px]">
-                                    <div className="w-16 h-16 bg-teal-500/10 rounded-full flex items-center justify-center border border-teal-500/20">
-                                        <CheckCircle2 className="w-8 h-8 text-teal-500" />
+                                    <div className="w-16 h-16 bg-violet-500/10 rounded-full flex items-center justify-center border border-violet-500/20">
+                                        <CheckCircle2 className="w-8 h-8 text-violet-400" />
                                     </div>
                                     <h3 className="text-xl font-bold text-white">Message Sent</h3>
                                     <p className="text-slate-400 max-w-xs text-sm leading-relaxed">I'll review and get back to you within 24 hours.</p>
                                     <button
                                         onClick={() => setSubmitted(false)}
-                                        className="text-teal-400 hover:text-teal-300 text-sm font-medium mt-4 transition-colors"
+                                        className="text-violet-400 hover:text-violet-300 text-sm font-medium mt-4 transition-colors"
                                     >
                                         Send another message
                                     </button>
@@ -156,7 +156,7 @@ const Contact: React.FC = () => {
                                             <input
                                                 required
                                                 type="text"
-                                                className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-teal-500/60 focus:ring-1 focus:ring-teal-500/20 transition-all"
+                                                className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all"
                                                 placeholder="Your name"
                                             />
                                         </div>
@@ -164,7 +164,7 @@ const Contact: React.FC = () => {
                                             <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Company</label>
                                             <input
                                                 type="text"
-                                                className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-teal-500/60 focus:ring-1 focus:ring-teal-500/20 transition-all"
+                                                className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all"
                                                 placeholder="Company name"
                                             />
                                         </div>
@@ -175,14 +175,14 @@ const Contact: React.FC = () => {
                                         <input
                                             required
                                             type="email"
-                                            className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-teal-500/60 focus:ring-1 focus:ring-teal-500/20 transition-all"
+                                            className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all"
                                             placeholder="your@email.com"
                                         />
                                     </div>
 
                                     <div className="space-y-1.5">
                                         <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Topic</label>
-                                        <select className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500/60 focus:ring-1 focus:ring-teal-500/20 transition-all appearance-none">
+                                        <select className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all appearance-none">
                                             <option>Job Opportunity</option>
                                             <option>ERP Implementation Project</option>
                                             <option>Automation Consultation</option>
@@ -194,14 +194,14 @@ const Contact: React.FC = () => {
                                         <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Message</label>
                                         <textarea
                                             rows={4}
-                                            className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-teal-500/60 focus:ring-1 focus:ring-teal-500/20 transition-all resize-none"
+                                            className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 transition-all resize-none"
                                             placeholder="Tell me about the role, project, or what you need..."
                                         />
                                     </div>
 
                                     <button
                                         type="submit"
-                                        className="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-bold py-3.5 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50 hover:scale-[1.01]"
+                                        className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-bold py-3.5 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 hover:scale-[1.01]"
                                     >
                                         <Send className="w-4 h-4 mr-2" />
                                         Send Message

@@ -15,7 +15,7 @@ const ProductionPlanningDemo: React.FC = () => {
 
     const data = [
         { name: 'Initial Inventory', units: inventory, fill: '#64748b' }, // slate-500
-        { name: 'Planned Production', units: plannedProduction, fill: '#14b8a6' }, // teal-500
+        { name: 'Planned Production', units: plannedProduction, fill: '#8b5cf6' }, // violet-500
         { name: 'Total Demand', units: demand, fill: '#ef4444' } // red-500
     ];
 
@@ -109,9 +109,9 @@ const ProductionPlanningDemo: React.FC = () => {
     return (
         <div className="container mx-auto px-4 py-12 max-w-7xl">
             <div className="mb-12 text-center space-y-4">
-                <h1 className="text-4xl md:text-5xl font-mono font-bold text-teal-400">Production Planning 101</h1>
+                <h1 className="text-4xl md:text-5xl font-mono font-bold text-violet-400">Production Planning 101</h1>
                 <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-                    Production planning is the process of aligning <span className="text-red-400 font-semibold">Demand</span> with available <span className="text-teal-400 font-semibold">Capacity</span> and <span className="text-slate-300 font-semibold">Inventory</span>. Use the interactive controls below to see how changes affect your production strategy.
+                    Production planning is the process of aligning <span className="text-red-400 font-semibold">Demand</span> with available <span className="text-violet-400 font-semibold">Capacity</span> and <span className="text-slate-300 font-semibold">Inventory</span>. Use the interactive controls below to see how changes affect your production strategy.
                 </p>
             </div>
 
@@ -142,14 +142,14 @@ const ProductionPlanningDemo: React.FC = () => {
                         <label className="block">
                             <div className="flex justify-between mb-2">
                                 <span className="text-slate-300 font-medium">Production Capacity</span>
-                                <span className="text-teal-400 font-mono">{capacity} units</span>
+                                <span className="text-violet-400 font-mono">{capacity} units</span>
                             </div>
                             <input 
                                 type="range" 
                                 min="0" max="2000" step="50"
                                 value={capacity} 
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCapacity(Number(e.target.value))}
-                                className="w-full accent-teal-500"
+                                className="w-full accent-violet-500"
                             />
                             <p className="text-xs text-slate-500 mt-1">Maximum units that can be built per week.</p>
                         </label>
@@ -178,9 +178,9 @@ const ProductionPlanningDemo: React.FC = () => {
                     {/* Key Metrics */}
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div className="border border-slate-800 bg-slate-900 rounded-xl p-4 text-center relative overflow-hidden group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             <p className="text-slate-400 text-sm mb-1">Planned Production</p>
-                            <p className="text-3xl font-mono font-bold text-teal-400">{plannedProduction}</p>
+                            <p className="text-3xl font-mono font-bold text-violet-400">{plannedProduction}</p>
                         </div>
                         <div className="border border-slate-800 bg-slate-900 rounded-xl p-4 text-center relative overflow-hidden group">
                             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -222,7 +222,7 @@ const ProductionPlanningDemo: React.FC = () => {
 
                     {/* Explanatory Text */}
                     <div className="border border-slate-800 bg-slate-900 rounded-xl p-6 relative overflow-hidden group">
-                         <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-bl-full transition-transform group-hover:scale-110"></div>
+                         <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/5 rounded-bl-full transition-transform group-hover:scale-110"></div>
                          <h3 className="text-xl font-mono font-bold text-white mb-3">How it works</h3>
                          <div className="space-y-3 text-slate-300 text-sm leading-relaxed relative z-10">
                             <p>
@@ -232,7 +232,7 @@ const ProductionPlanningDemo: React.FC = () => {
                                 Then, you compare this requirement to your <strong>Production Capacity</strong> ({capacity} units). {
                                     plannedProduction === capacity && capacity < totalRequired 
                                     ? <span className="text-red-400">Since capacity is lower than requirements, you max out capacity at {plannedProduction} units, causing a shortfall.</span>
-                                    : <span className="text-teal-400">Since capacity is sufficient, you only produce what you need: {plannedProduction} units.</span>
+                                    : <span className="text-violet-400">Since capacity is sufficient, you only produce what you need: {plannedProduction} units.</span>
                                 }
                             </p>
                             <p>
@@ -275,13 +275,13 @@ const ProductionPlanningDemo: React.FC = () => {
                             <label className="block">
                                 <div className="flex justify-between mb-2">
                                     <span className="text-slate-300 font-medium">Avg Daily Production</span>
-                                    <span className="text-teal-400 font-mono">{dailyProduction}</span>
+                                    <span className="text-violet-400 font-mono">{dailyProduction}</span>
                                 </div>
                                 <input 
                                     type="range" min="50" max="300" step="10"
                                     value={dailyProduction} 
                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDailyProduction(Number(e.target.value))}
-                                    className="w-full accent-teal-500"
+                                    className="w-full accent-violet-500"
                                 />
                                 <p className="text-xs text-slate-500 mt-1">Baseline built per day (± variability applied)</p>
                             </label>
@@ -349,10 +349,10 @@ const ProductionPlanningDemo: React.FC = () => {
                                     <Line 
                                         type="monotone" 
                                         dataKey="inventory" 
-                                        stroke="#14b8a6" 
+                                        stroke="#8b5cf6" 
                                         strokeWidth={3}
-                                        dot={{ r: 4, fill: '#0f172a', stroke: '#14b8a6', strokeWidth: 2 }} 
-                                        activeDot={{ r: 6, fill: '#14b8a6' }}
+                                        dot={{ r: 4, fill: '#0f172a', stroke: '#8b5cf6', strokeWidth: 2 }} 
+                                        activeDot={{ r: 6, fill: '#8b5cf6' }}
                                         name="Projected Inventory" 
                                     />
                                 </ComposedChart>
@@ -365,9 +365,9 @@ const ProductionPlanningDemo: React.FC = () => {
             {/* --- DEMO 3: Multi-Level BOM Demand Netting --- */}
             <div className="mt-16 border-t border-slate-800 pt-16 mb-12">
                 <div className="mb-12 text-center space-y-4">
-                    <h2 className="text-3xl md:text-4xl font-mono font-bold text-teal-400">3. Multi-Level BOM Demand Netting</h2>
+                    <h2 className="text-3xl md:text-4xl font-mono font-bold text-violet-400">3. Multi-Level BOM Demand Netting</h2>
                     <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-                        Simulate MRP-style demand netting across BOM levels. Explode <span className="text-red-400 font-semibold">Gross Requirements</span> down to components and calculate <span className="text-teal-400 font-semibold">Net Requirements</span> based on inventory.
+                        Simulate MRP-style demand netting across BOM levels. Explode <span className="text-red-400 font-semibold">Gross Requirements</span> down to components and calculate <span className="text-violet-400 font-semibold">Net Requirements</span> based on inventory.
                     </p>
                 </div>
 
@@ -393,13 +393,13 @@ const ProductionPlanningDemo: React.FC = () => {
                             <label className="block">
                                 <div className="flex justify-between mb-2">
                                     <span className="text-slate-300 font-medium text-sm">Safety Stock %</span>
-                                    <span className="text-teal-400 font-mono text-sm">{safetyStockPct}%</span>
+                                    <span className="text-violet-400 font-mono text-sm">{safetyStockPct}%</span>
                                 </div>
                                 <input 
                                     type="range" min="0" max="50" step="5"
                                     value={safetyStockPct} 
                                     onChange={(e) => setSafetyStockPct(Number(e.target.value))}
-                                    className="w-full accent-teal-500"
+                                    className="w-full accent-violet-500"
                                 />
                             </label>
                         </div>
@@ -506,7 +506,7 @@ const ProductionPlanningDemo: React.FC = () => {
                                         />
                                         <Legend />
                                         <Bar dataKey="gr" name="Gross Req" fill="#64748b" radius={[4, 4, 0, 0]} />
-                                        <Bar dataKey="netReq" name="Net Req" fill="#14b8a6" radius={[4, 4, 0, 0]} />
+                                        <Bar dataKey="netReq" name="Net Req" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>

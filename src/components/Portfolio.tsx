@@ -46,35 +46,39 @@ type IconConfig = {
     glow: string;
     borderHover: string;
     iconBg: string;
+    metricColor: string;
 };
 
 const iconConfig: Record<string, IconConfig> = {
     erp: {
         icon: <Database className="w-5 h-5 text-violet-300" />,
-        accent: 'from-violet-600 to-indigo-500',
-        tagBg: 'bg-violet-500/15 border-violet-500/30',
-        tagText: 'text-violet-200',
-        glow: 'hover:shadow-violet-500/20',
-        borderHover: 'hover:border-violet-500/60',
-        iconBg: 'bg-violet-500/15',
+        accent: 'from-violet-600 to-purple-600',
+        tagBg: 'bg-violet-500/10 border-violet-500/20',
+        tagText: 'text-violet-300',
+        glow: 'hover:shadow-violet-500/10',
+        borderHover: 'hover:border-violet-500/40',
+        iconBg: 'bg-violet-500/10',
+        metricColor: 'text-violet-400',
     },
     auto: {
-        icon: <Cog className="w-5 h-5 text-teal-300" />,
-        accent: 'from-teal-500 to-emerald-500',
-        tagBg: 'bg-teal-500/15 border-teal-500/30',
-        tagText: 'text-teal-200',
-        glow: 'hover:shadow-teal-500/20',
-        borderHover: 'hover:border-teal-500/60',
-        iconBg: 'bg-teal-500/15',
+        icon: <Cog className="w-5 h-5 text-emerald-300" />,
+        accent: 'from-emerald-600 to-green-600',
+        tagBg: 'bg-emerald-500/10 border-emerald-500/20',
+        tagText: 'text-emerald-300',
+        glow: 'hover:shadow-emerald-500/10',
+        borderHover: 'hover:border-emerald-500/40',
+        iconBg: 'bg-emerald-500/10',
+        metricColor: 'text-emerald-400',
     },
     bi: {
         icon: <Layout className="w-5 h-5 text-blue-300" />,
-        accent: 'from-blue-500 to-sky-400',
-        tagBg: 'bg-blue-500/15 border-blue-500/30',
-        tagText: 'text-sky-200',
-        glow: 'hover:shadow-blue-500/20',
-        borderHover: 'hover:border-blue-500/60',
-        iconBg: 'bg-blue-500/15',
+        accent: 'from-blue-600 to-indigo-600',
+        tagBg: 'bg-blue-500/10 border-blue-500/20',
+        tagText: 'text-blue-300',
+        glow: 'hover:shadow-blue-500/10',
+        borderHover: 'hover:border-blue-500/40',
+        iconBg: 'bg-blue-500/10',
+        metricColor: 'text-blue-400',
     },
 };
 
@@ -82,8 +86,8 @@ const Portfolio: React.FC = () => {
     return (
         <div className="relative min-h-screen">
             {/* Background */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-teal-500/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(124,58,237,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(124,58,237,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-violet-700/6 rounded-full blur-3xl pointer-events-none" />
 
             <section className="container mx-auto px-4 py-16 relative z-10">
 
@@ -94,12 +98,12 @@ const Portfolio: React.FC = () => {
                     transition={{ duration: 0.7 }}
                     className="max-w-3xl mb-16"
                 >
-                    <span className="inline-block text-xs font-mono tracking-widest text-teal-300 mb-5 border border-teal-500/50 rounded-full px-4 py-1.5 bg-teal-500/10">
+                    <span className="inline-block text-xs font-mono tracking-widest text-violet-400 mb-5 border border-violet-500/30 rounded-full px-4 py-1.5 bg-violet-500/5">
                         SELECTED WORK
                     </span>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight tracking-tight">
                         Built to Solve{' '}
-                        <span className="bg-gradient-to-r from-teal-300 to-emerald-400 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
                             Real Problems
                         </span>
                     </h2>
@@ -156,8 +160,8 @@ const Portfolio: React.FC = () => {
                                     <div className="pt-5 border-t border-slate-800 space-y-2.5">
                                         {project.metrics.map((metric, i) => (
                                             <div key={i} className="flex items-center gap-2.5">
-                                                <CheckCircle2 className="w-3.5 h-3.5 text-teal-500 flex-shrink-0" />
-                                                <span className="text-xs font-mono text-teal-400">{metric}</span>
+                                                <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 ${cfg.metricColor}`} />
+                                                <span className={`text-xs font-mono ${cfg.metricColor}`}>{metric}</span>
                                             </div>
                                         ))}
                                     </div>

@@ -154,7 +154,7 @@ const Dashboard: React.FC = () => {
     };
 
     // ─── Render Helpers ───
-    const getHealthColor = (val: number) => val > 90 ? 'text-teal-400' : val > 75 ? 'text-amber-400' : 'text-red-400';
+    const getHealthColor = (val: number) => val > 90 ? 'text-violet-400' : val > 75 ? 'text-amber-400' : 'text-red-400';
 
     return (
         <div className="w-full bg-slate-950/50 rounded-2xl border border-slate-800 p-4 md:p-8 backdrop-blur-xl mb-12 shadow-2xl">
@@ -162,7 +162,7 @@ const Dashboard: React.FC = () => {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                 <div>
                     <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-3 text-white">
-                        <Activity className="text-teal-400" />
+                        <Activity className="text-violet-400" />
                         Manufacturing Control Tower
                     </h2>
                     <p className="text-slate-400 mt-1">
@@ -179,7 +179,7 @@ const Dashboard: React.FC = () => {
                     </button>
                     <button
                         onClick={triggerOptimized}
-                        className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${!isShockMode ? 'bg-teal-500/20 text-teal-400' : 'text-slate-400 hover:text-teal-400'}`}
+                        className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${!isShockMode ? 'bg-violet-500/20 text-violet-400' : 'text-slate-400 hover:text-violet-400'}`}
                     >
                         Run AI Optimizer
                     </button>
@@ -222,8 +222,8 @@ const Dashboard: React.FC = () => {
                     <div className="bg-slate-900/30 border border-slate-800 rounded-xl p-5">
                         <h3 className="text-slate-300 font-semibold mb-6 flex items-center justify-between">
                             Real-Time Production Output
-                            <span className="flex items-center gap-2 text-xs font-mono text-teal-500 bg-teal-500/10 px-2 py-1 rounded">
-                                <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" /> LIVE SYNC
+                            <span className="flex items-center gap-2 text-xs font-mono text-violet-500 bg-violet-500/10 px-2 py-1 rounded">
+                                <span className="w-2 h-2 rounded-full bg-violet-500 animate-pulse" /> LIVE SYNC
                             </span>
                         </h3>
                         <div className="h-64 w-full">
@@ -299,7 +299,7 @@ const Dashboard: React.FC = () => {
                                     >
                                         <div className="flex items-start gap-3">
                                             <div className="mt-0.5">
-                                                {event.type === 'success' && <CheckCircle2 size={14} className="text-teal-500" />}
+                                                {event.type === 'success' && <CheckCircle2 size={14} className="text-violet-500" />}
                                                 {event.type === 'error' && <AlertCircle size={14} className="text-red-500" />}
                                                 {event.type === 'info' && <Activity size={14} className="text-blue-500" />}
                                             </div>
