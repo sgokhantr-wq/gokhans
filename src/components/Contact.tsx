@@ -20,19 +20,19 @@ const Contact: React.FC = () => {
         <div className="relative min-h-screen">
             {/* Background */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
-            <div className="absolute top-0 right-1/4 w-[600px] h-[500px] bg-teal-600/6 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-cyan-600/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-1/4 w-[600px] h-[500px] bg-teal-500/18 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-emerald-500/12 rounded-full blur-3xl pointer-events-none" />
 
             <section className="container mx-auto px-4 py-16 max-w-5xl relative z-10">
 
                 {/* Page header */}
                 <motion.div {...fadeUp(0)} className="mb-14">
-                    <span className="inline-block text-xs font-mono tracking-widest text-teal-400 mb-5 border border-teal-500/30 rounded-full px-4 py-1.5 bg-teal-500/5">
+                    <span className="inline-block text-xs font-mono tracking-widest text-teal-300 mb-5 border border-teal-500/50 rounded-full px-4 py-1.5 bg-teal-500/10">
                         GET IN TOUCH
                     </span>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight tracking-tight">
                         Ready to{' '}
-                        <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-teal-300 to-emerald-400 bg-clip-text text-transparent">
                             Contribute
                         </span>
                         {' '}from Day One
@@ -201,7 +201,7 @@ const Contact: React.FC = () => {
 
                                     <button
                                         type="submit"
-                                        className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-900 font-bold py-3.5 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-teal-500/20 hover:shadow-teal-500/30 hover:scale-[1.01]"
+                                        className="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-bold py-3.5 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50 hover:scale-[1.01]"
                                     >
                                         <Send className="w-4 h-4 mr-2" />
                                         Send Message

@@ -15,8 +15,8 @@ const Hero: React.FC = () => {
             {/* Background grid */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.04)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
             {/* Glow orbs */}
-            <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-teal-600/8 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-cyan-600/6 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-teal-500/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
                     {/* Left Column */}
                     <div className="space-y-8">
                         <motion.div {...fadeUp(0)}>
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-900/30 border border-teal-800/50 text-teal-400 text-xs font-mono font-medium">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/40 text-teal-300 text-xs font-mono font-medium">
                                 <span className="relative flex h-2 w-2">
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75" />
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500" />
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
 
                         <motion.h1 {...fadeUp(0.1)} className="text-5xl md:text-6xl font-extrabold leading-tight text-white tracking-tight">
                             I turn data
-                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">
+                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-emerald-400">
                                 into decisions
                             </span>
                         </motion.h1>
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
                         <motion.div {...fadeUp(0.3)} className="flex flex-col sm:flex-row gap-4">
                             <Link
                                 to="/live-demo"
-                                className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl text-slate-900 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 transition-all duration-300 shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:scale-[1.02]"
+                                className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl text-white bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 transition-all duration-300 shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50 hover:scale-[1.02]"
                             >
                                 Try Live Dashboard
                                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -91,8 +91,8 @@ const Hero: React.FC = () => {
                     >
                         <div className="relative rounded-2xl bg-slate-900/90 border border-slate-700/80 shadow-2xl shadow-black/50 p-6 backdrop-blur-sm hover:border-slate-600 transition-all duration-500">
                             {/* Card glow */}
-                            <div className="absolute -top-8 -right-8 w-40 h-40 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
-                            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-cyan-500/8 rounded-full blur-2xl pointer-events-none" />
+                            <div className="absolute -top-8 -right-8 w-40 h-40 bg-teal-500/20 rounded-full blur-3xl pointer-events-none" />
+                            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-emerald-500/15 rounded-full blur-2xl pointer-events-none" />
 
                             {/* Dashboard header */}
                             <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-800">

@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
                         ))}
                         <Link
                             to="/contact"
-                            className="px-4 py-2 text-sm font-semibold text-slate-900 bg-teal-500 rounded hover:bg-teal-400 transition-colors"
+                            className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-emerald-500 rounded hover:from-teal-400 hover:to-emerald-400 transition-all duration-200 shadow-md shadow-teal-500/25"
                         >
                             Hire Me
                         </Link>
