@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
                     {/* Logo */}
                     <div className="flex items-center space-x-3">
                         <Link to="/" className="flex items-center space-x-2 group">
-                            <div className="p-2 bg-slate-800 rounded group-hover:bg-purple-600 transition-colors">
+                            <div className="p-2 bg-slate-800 rounded group-hover:bg-blue-700 transition-colors">
                                 <Terminal size={24} className="text-blue-400 group-hover:text-white" />
                             </div>
                             <span className="text-xl font-bold tracking-tight text-white">
@@ -66,12 +66,6 @@ const Navbar: React.FC = () => {
                                 {link.name}
                             </Link>
                         ))}
-                        <Link
-                            to="/contact"
-                            className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-purple-600 rounded-lg hover:from-blue-500 hover:to-purple-500 transition-all duration-300 shadow-md shadow-blue-500/20"
-                        >
-                            Hire Me
-                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
