@@ -112,22 +112,30 @@ const ProductionPlanningDemo: React.FC = () => {
     const [onTimeDelivery, setOnTimeDelivery] = useState<number>(88);
     const [laborEfficiency, setLaborEfficiency] = useState<number>(80);
     const [materialCostRatio, setMaterialCostRatio] = useState<number>(45);
+    const [supplierOTD, setSupplierOTD] = useState<number>(82);
+    const [headcount, setHeadcount] = useState<number>(85);
 
     const digitalTwinMetrics = useMemo(() => {
         const oee = Math.round(capacityUsed * (laborEfficiency / 100) * ((100 - defectRate) / 100));
         const throughput = Math.round(capacityUsed * ((100 - defectRate) / 100));
         const costEfficiency = 100 - materialCostRatio;
         const customerScore = onTimeDelivery;
-        const overallHealth = Math.round((oee + throughput + costEfficiency + customerScore) / 4);
+        const supplierScore = supplierOTD;
+        // workforce score: how well current headcount covers required staffing for active capacity
+        const requiredWorkers = Math.max(1, Math.round(capacityUsed * 1.5));
+        const workforceScore = Math.min(100, Math.round((headcount / requiredWorkers) * 100));
+        const overallHealth = Math.round((oee + throughput + costEfficiency + customerScore + supplierScore + workforceScore) / 6);
         const radarData = [
             { metric: 'OEE', value: oee },
             { metric: 'Throughput', value: throughput },
             { metric: 'Cost Efficiency', value: costEfficiency },
-            { metric: 'On-Time Delivery', value: customerScore },
+            { metric: 'Customer OTD', value: customerScore },
             { metric: 'Labor Efficiency', value: laborEfficiency },
+            { metric: 'Supplier OTD', value: supplierScore },
+            { metric: 'Workforce', value: workforceScore },
         ];
-        return { oee, throughput, costEfficiency, customerScore, overallHealth, radarData };
-    }, [capacityUsed, defectRate, onTimeDelivery, laborEfficiency, materialCostRatio]);
+        return { oee, throughput, costEfficiency, customerScore, supplierScore, workforceScore, overallHealth, radarData };
+    }, [capacityUsed, defectRate, onTimeDelivery, laborEfficiency, materialCostRatio, supplierOTD, headcount]);
 
     const twinHealthColor = digitalTwinMetrics.overallHealth >= 80 ? 'text-emerald-400' : digitalTwinMetrics.overallHealth >= 60 ? 'text-amber-400' : 'text-red-400';
     const twinStatusLabel = digitalTwinMetrics.overallHealth >= 80 ? 'Healthy' : digitalTwinMetrics.overallHealth >= 60 ? 'Needs Attention' : 'Critical';
@@ -592,6 +600,17 @@ const ProductionPlanningDemo: React.FC = () => {
                                     className="w-full accent-red-500" />
                                 <p className="text-xs text-slate-500 mt-1">% of output rejected or scrapped</p>
                             </label>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium text-sm">Production Floor Headcount</span>
+                                    <span className="text-blue-400 font-mono text-sm">{headcount} workers</span>
+                                </div>
+                                <input type="range" min="10" max="200" step="5" value={headcount}
+                                    onChange={e => setHeadcount(Number(e.target.value))}
+                                    className="w-full accent-blue-500" />
+                                <p className="text-xs text-slate-500 mt-1">Active workers on the production floor</p>
+                            </label>
                         </div>
 
                         {/* Commercial box */}
@@ -600,13 +619,24 @@ const ProductionPlanningDemo: React.FC = () => {
 
                             <label className="block">
                                 <div className="flex justify-between mb-2">
-                                    <span className="text-slate-300 font-medium text-sm">On-Time Delivery</span>
+                                    <span className="text-slate-300 font-medium text-sm">Customer On-Time Delivery</span>
                                     <span className="text-emerald-400 font-mono text-sm">{onTimeDelivery}%</span>
                                 </div>
                                 <input type="range" min="0" max="100" step="1" value={onTimeDelivery}
                                     onChange={e => setOnTimeDelivery(Number(e.target.value))}
                                     className="w-full accent-emerald-500" />
                                 <p className="text-xs text-slate-500 mt-1">Orders delivered on or before due date</p>
+                            </label>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium text-sm">Supplier On-Time Delivery</span>
+                                    <span className="text-amber-400 font-mono text-sm">{supplierOTD}%</span>
+                                </div>
+                                <input type="range" min="0" max="100" step="1" value={supplierOTD}
+                                    onChange={e => setSupplierOTD(Number(e.target.value))}
+                                    className="w-full accent-amber-500" />
+                                <p className="text-xs text-slate-500 mt-1">Inbound materials received on schedule</p>
                             </label>
 
                             <label className="block">
@@ -625,16 +655,21 @@ const ProductionPlanningDemo: React.FC = () => {
                     {/* Right: KPIs + RadarChart */}
                     <div className="lg:col-span-3 space-y-6">
                         {/* KPI cards */}
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                             <div className="border border-slate-800 bg-slate-900 rounded-xl p-5 text-center">
                                 <p className="text-xs text-slate-500 font-mono mb-2">OEE</p>
                                 <p className="text-3xl font-mono font-bold text-blue-400">{digitalTwinMetrics.oee}%</p>
                                 <p className="text-xs text-slate-600 mt-1">Availability × Performance × Quality</p>
                             </div>
                             <div className="border border-slate-800 bg-slate-900 rounded-xl p-5 text-center">
+                                <p className="text-xs text-slate-500 font-mono mb-2">Supplier OTD</p>
+                                <p className="text-3xl font-mono font-bold text-amber-400">{digitalTwinMetrics.supplierScore}%</p>
+                                <p className="text-xs text-slate-600 mt-1">Inbound materials on schedule</p>
+                            </div>
+                            <div className="border border-slate-800 bg-slate-900 rounded-xl p-5 text-center">
                                 <p className="text-xs text-slate-500 font-mono mb-2">Overall Health</p>
                                 <p className={`text-3xl font-mono font-bold ${twinHealthColor}`}>{digitalTwinMetrics.overallHealth}%</p>
-                                <p className="text-xs text-slate-600 mt-1">Composite of all 5 metrics</p>
+                                <p className="text-xs text-slate-600 mt-1">Composite of all 7 metrics</p>
                             </div>
                             <div className="border border-slate-800 bg-slate-900 rounded-xl p-5 text-center flex flex-col items-center justify-center">
                                 <p className="text-xs text-slate-500 font-mono mb-3">Status</p>
@@ -660,7 +695,7 @@ const ProductionPlanningDemo: React.FC = () => {
                                         <RechartsTooltip
                                             contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#f8fafc' }}
                                             labelStyle={{ color: '#cbd5e1' }}
-                                            formatter={(value: number) => [`${value}%`, 'Score']}
+                                            formatter={(value) => [`${value}%`, 'Score']}
                                         />
                                     </RadarChart>
                                 </ResponsiveContainer>
