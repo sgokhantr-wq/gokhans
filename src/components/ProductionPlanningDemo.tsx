@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, BarChart, Bar, Cell, Area, ComposedChart, Line, Legend } from 'recharts';
+import { XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, BarChart, Bar, Cell, Area, ComposedChart, Line, Legend, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 
 const ProductionPlanningDemo: React.FC = () => {
     const [demand, setDemand] = useState<number>(1000);
@@ -105,6 +105,33 @@ const ProductionPlanningDemo: React.FC = () => {
     } else if (totalNetReq > 0) {
         bomStatus = "Partial Shortage";
     }
+
+    // ── Demo 4: Digital Twin state ──────────────────────────────────────────
+    const [capacityUsed, setCapacityUsed] = useState<number>(75);
+    const [defectRate, setDefectRate] = useState<number>(5);
+    const [onTimeDelivery, setOnTimeDelivery] = useState<number>(88);
+    const [laborEfficiency, setLaborEfficiency] = useState<number>(80);
+    const [materialCostRatio, setMaterialCostRatio] = useState<number>(45);
+
+    const digitalTwinMetrics = useMemo(() => {
+        const oee = Math.round(capacityUsed * (laborEfficiency / 100) * ((100 - defectRate) / 100));
+        const throughput = Math.round(capacityUsed * ((100 - defectRate) / 100));
+        const costEfficiency = 100 - materialCostRatio;
+        const customerScore = onTimeDelivery;
+        const overallHealth = Math.round((oee + throughput + costEfficiency + customerScore) / 4);
+        const radarData = [
+            { metric: 'OEE', value: oee },
+            { metric: 'Throughput', value: throughput },
+            { metric: 'Cost Efficiency', value: costEfficiency },
+            { metric: 'On-Time Delivery', value: customerScore },
+            { metric: 'Labor Efficiency', value: laborEfficiency },
+        ];
+        return { oee, throughput, costEfficiency, customerScore, overallHealth, radarData };
+    }, [capacityUsed, defectRate, onTimeDelivery, laborEfficiency, materialCostRatio]);
+
+    const twinHealthColor = digitalTwinMetrics.overallHealth >= 80 ? 'text-emerald-400' : digitalTwinMetrics.overallHealth >= 60 ? 'text-amber-400' : 'text-red-400';
+    const twinStatusLabel = digitalTwinMetrics.overallHealth >= 80 ? 'Healthy' : digitalTwinMetrics.overallHealth >= 60 ? 'Needs Attention' : 'Critical';
+    const twinStatusBg = digitalTwinMetrics.overallHealth >= 80 ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : digitalTwinMetrics.overallHealth >= 60 ? 'bg-amber-500/10 border-amber-500/30 text-amber-400' : 'bg-red-500/10 border-red-500/30 text-red-400';
 
     return (
         <div className="container mx-auto px-4 py-12 max-w-7xl">
@@ -514,6 +541,135 @@ const ProductionPlanningDemo: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            {/* ── DEMO 4: Digital Twin Simulator ─────────────────────────────────── */}
+            <div className="mt-16 border-t border-slate-800 pt-16">
+                <div className="mb-12 text-center space-y-4">
+                    <h2 className="text-3xl md:text-4xl font-mono font-bold text-blue-400">4. Digital Twin Simulator</h2>
+                    <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                        Set your operational parameters. Equations calculate your company's{' '}
+                        <span className="text-blue-400 font-semibold">performance profile</span> in real time —
+                        making it easier for management to see the full picture and make decisions.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    {/* Left: Controls */}
+                    <div className="lg:col-span-1 space-y-6">
+                        {/* Operations box */}
+                        <div className="border border-slate-800 bg-slate-900 rounded-xl p-6 space-y-6">
+                            <h3 className="text-xl font-mono font-bold text-white border-b border-slate-800 pb-4">Operations</h3>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium text-sm">Capacity Utilization</span>
+                                    <span className="text-blue-400 font-mono text-sm">{capacityUsed}%</span>
+                                </div>
+                                <input type="range" min="0" max="100" step="1" value={capacityUsed}
+                                    onChange={e => setCapacityUsed(Number(e.target.value))}
+                                    className="w-full accent-blue-500" />
+                                <p className="text-xs text-slate-500 mt-1">% of total plant capacity in use</p>
+                            </label>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium text-sm">Labor Efficiency</span>
+                                    <span className="text-blue-400 font-mono text-sm">{laborEfficiency}%</span>
+                                </div>
+                                <input type="range" min="0" max="100" step="1" value={laborEfficiency}
+                                    onChange={e => setLaborEfficiency(Number(e.target.value))}
+                                    className="w-full accent-blue-500" />
+                                <p className="text-xs text-slate-500 mt-1">Actual vs standard labor hours</p>
+                            </label>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium text-sm">Defect / Scrap Rate</span>
+                                    <span className="text-red-400 font-mono text-sm">{defectRate}%</span>
+                                </div>
+                                <input type="range" min="0" max="20" step="1" value={defectRate}
+                                    onChange={e => setDefectRate(Number(e.target.value))}
+                                    className="w-full accent-red-500" />
+                                <p className="text-xs text-slate-500 mt-1">% of output rejected or scrapped</p>
+                            </label>
+                        </div>
+
+                        {/* Commercial box */}
+                        <div className="border border-slate-800 bg-slate-900 rounded-xl p-6 space-y-6">
+                            <h3 className="text-xl font-mono font-bold text-white border-b border-slate-800 pb-4">Commercial</h3>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium text-sm">On-Time Delivery</span>
+                                    <span className="text-emerald-400 font-mono text-sm">{onTimeDelivery}%</span>
+                                </div>
+                                <input type="range" min="0" max="100" step="1" value={onTimeDelivery}
+                                    onChange={e => setOnTimeDelivery(Number(e.target.value))}
+                                    className="w-full accent-emerald-500" />
+                                <p className="text-xs text-slate-500 mt-1">Orders delivered on or before due date</p>
+                            </label>
+
+                            <label className="block">
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-slate-300 font-medium text-sm">Material Cost Ratio</span>
+                                    <span className="text-amber-400 font-mono text-sm">{materialCostRatio}%</span>
+                                </div>
+                                <input type="range" min="10" max="70" step="1" value={materialCostRatio}
+                                    onChange={e => setMaterialCostRatio(Number(e.target.value))}
+                                    className="w-full accent-amber-500" />
+                                <p className="text-xs text-slate-500 mt-1">Material cost as % of revenue</p>
+                            </label>
+                        </div>
+                    </div>
+
+                    {/* Right: KPIs + RadarChart */}
+                    <div className="lg:col-span-3 space-y-6">
+                        {/* KPI cards */}
+                        <div className="grid grid-cols-3 gap-4">
+                            <div className="border border-slate-800 bg-slate-900 rounded-xl p-5 text-center">
+                                <p className="text-xs text-slate-500 font-mono mb-2">OEE</p>
+                                <p className="text-3xl font-mono font-bold text-blue-400">{digitalTwinMetrics.oee}%</p>
+                                <p className="text-xs text-slate-600 mt-1">Availability × Performance × Quality</p>
+                            </div>
+                            <div className="border border-slate-800 bg-slate-900 rounded-xl p-5 text-center">
+                                <p className="text-xs text-slate-500 font-mono mb-2">Overall Health</p>
+                                <p className={`text-3xl font-mono font-bold ${twinHealthColor}`}>{digitalTwinMetrics.overallHealth}%</p>
+                                <p className="text-xs text-slate-600 mt-1">Composite of all 5 metrics</p>
+                            </div>
+                            <div className="border border-slate-800 bg-slate-900 rounded-xl p-5 text-center flex flex-col items-center justify-center">
+                                <p className="text-xs text-slate-500 font-mono mb-3">Status</p>
+                                <span className={`px-4 py-1.5 rounded-full text-sm font-semibold border ${twinStatusBg}`}>
+                                    {twinStatusLabel}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Radar chart */}
+                        <div className="border border-slate-800 bg-slate-900 rounded-xl p-6 h-[400px] flex flex-col">
+                            <div className="mb-2">
+                                <h3 className="text-lg font-mono text-white">Company Performance Profile</h3>
+                                <p className="text-sm text-slate-500">Each axis is 0–100. A larger shape means a healthier operation.</p>
+                            </div>
+                            <div className="flex-grow">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <RadarChart data={digitalTwinMetrics.radarData} margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
+                                        <PolarGrid stroke="#1e293b" />
+                                        <PolarAngleAxis dataKey="metric" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+                                        <PolarRadiusAxis domain={[0, 100]} tick={{ fill: '#475569', fontSize: 10 }} tickCount={5} />
+                                        <Radar dataKey="value" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.15} strokeWidth={2} />
+                                        <RechartsTooltip
+                                            contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#f8fafc' }}
+                                            labelStyle={{ color: '#cbd5e1' }}
+                                            formatter={(value: number) => [`${value}%`, 'Score']}
+                                        />
+                                    </RadarChart>
+                                </ResponsiveContainer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     );
 };
